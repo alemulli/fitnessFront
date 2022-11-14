@@ -1,3 +1,7 @@
+input , input:focus{
+  border-style: solid;
+}
+
 body {
   font-family: 'Raleway', Arial, sans-serif;
   height: 100vh;
@@ -15,4 +19,94 @@ body {
   color: white;
   display: flex;
   align-items: center;
+}
+
+
+/* LOGIN AND REGISTER POP UP MENUS */
+#loginMenu.true, #registerMenu.true {
+  z-index: 1;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  position: fixed;
+  left: 0;
+  top: 0;
+  width:100%;
+  height:100%;
+  background-color: rgba(0, 0, 0, 0.6);
+  
+}
+
+#loginMenu.false, #registerMenu.false {
+  display: none;
+}
+
+.loginMenu, .registerMenu {
+  max-width: 50vw;
+  min-width: 50vw;
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  padding: 20px;
+  background-color: #060606;
+  color: white;
+  outline: none;
+  border: white 1px solid;
+}
+
+.loginMenu form, .registerMenu form{
+  height: 100%;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: space-between;
+}
+
+.loginMenu input, textarea, input:focus {
+  background-color: #060606;
+  color: white;
+}
+
+.loginMenu h3, button {
+  align-self: center;
+}
+
+.registerMenu input, textarea, input:focus {
+  background-color: #060606;
+  color: white;
+}
+
+.registerMenu h3, button {
+  align-self: center;
+}
+
+.material-symbols-outlined {
+  align-self: flex-end;
+}
+
+.material-symbols-outlined:hover {
+  font-weight: bolder;
+  transform: scale(1.2);
+}
+
+.submitButton {
+  background-color: #060606;
+  color: white;
+  border: white solid 1px;
+  padding: 5px;
+  padding-left: 10px;
+  padding-right: 10px;
+}
+
+
+/* NAVBAR */
+#navbar{
+  background-color: #060606;
+}
+
+#navbar a, #navbar button {
+  color: white;
+  text-decoration: none;
+  background-color: #060606;
+  border: none;
 }

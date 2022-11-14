@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { 
   Navbar, 
   Activities, 
@@ -11,8 +11,22 @@ import {
   Route,
   Routes,
 } from "react-router-dom"
+import {
+  getRoutines
+} from "../api-adapter"
 
 const Main = () => {
+  const [allRoutines, setAllRoutines] = useState([])
+
+  useEffect(()=>{
+    const fetchData = async () => {
+      const data = await getRoutines();
+
+      setAllRoutines(data);
+    }
+    fetchData();
+  }, [])
+
   return (
     <Router>
       <div id="main">
@@ -21,7 +35,7 @@ const Main = () => {
             <Route path="/" element={<Home />} />
             <Route path="/activities" element={<Activities />} />
             <Route path="/myroutines" element={<MyRoutines />} />
-            <Route path="/routines" element={<Routines />} />
+            <Route path="/routines" element={<Routines allRoutines={allRoutines}/>} />
           </Routes>
       </div>
     </Router>

@@ -8,9 +8,9 @@ const MyRoutines = (props) => {
     <div id="myRoutines">
         <h2>myRoutines:</h2>
         <div className="myRoutines">
-          {allUserRoutines ? allUserRoutines.map((routine, index) => {
+          {allUserRoutines.length ? allUserRoutines.map((routine, index) => {
             return (
-              <div className="oneRoutine" key={index}>
+              <div className="oneRoutine" key={routine.id}>
                     <h2>{routine.name}</h2>
                     <p> Creator: {routine.creatorName} </p>
                     <p> Goals: {routine.goal} </p>
@@ -18,20 +18,20 @@ const MyRoutines = (props) => {
                     <ul>
                         {routine.activities.map ((activity, index) => {
                             return (
-                                <>
+                                <div className="oneRoutineActivity" key={activity.routineActivityId}>
                                 <li> {activity.name} </li>
                                 <ul>
                                     <li> Duration: {activity.duration} minutes</li>
                                     <li> Count: {activity.count} repetitions</li>
                                 </ul>
-                                </>
+                                </div>
                             )
 
                         })}
                     </ul>
                 </div>
             )
-          }):null}
+          }):(<p>You have no routines yet!</p>)}
         </div>
   </div>
   );

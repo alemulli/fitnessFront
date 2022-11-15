@@ -1,5 +1,6 @@
 import React from "react";
 import { NavLink } from "react-router-dom";
+import { Logo } from "./"
 
 const Navbar = (props) => {
   const setLoggingIn=props.setLoggingIn
@@ -20,7 +21,7 @@ const Navbar = (props) => {
 
   return (
     <div id="navbar">
-      <div id="logo">LogoHere</div>
+      <div id="logo"><Logo /></div>
       <h2>Fitness Trackr</h2>
       <div className="menuContainer">
       <NavLink to="/"><button>HOME</button></NavLink>

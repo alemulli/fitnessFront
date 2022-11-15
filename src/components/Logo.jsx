@@ -5,9 +5,10 @@ class Logo extends Component {
 
     componentDidMount() {
       var scene = new THREE.Scene();
-      var camera = new THREE.PerspectiveCamera( 75, window.innerWidth/window.innerHeight, 0.1, 1000 );
-      var renderer = new THREE.WebGLRenderer();
-      renderer.setSize( window.innerWidth, window.innerHeight );
+      var camera = new THREE.PerspectiveCamera( 75, 1, 0.1, 1000 );
+      var renderer = new THREE.WebGLRenderer( { antialias: true } );
+      renderer.setSize( 100, 100 );
+      renderer.setClearColor ( 0x000000, 0);
 
       this.mount.appendChild( renderer.domElement );
       var geometry = new THREE.BoxGeometry( 1, 1, 1 );

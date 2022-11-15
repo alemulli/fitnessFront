@@ -27,7 +27,7 @@ const Activities = (props) => {
         {allActivities
           ? allActivities.map((activity, index) => {
               return (
-                <div className="oneActivity" key={index}>
+                <div className="oneActivity" key={activity.id}>
                   <h2> {activity.name} </h2>
                   <p> {activity.description} </p>
                 </div>

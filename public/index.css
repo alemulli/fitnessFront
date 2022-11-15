@@ -115,3 +115,8 @@ body {
 #navbar button:hover {
   cursor: pointer;
 }
+
+#logo {
+  max-height: 60px;
+  max-width: 60px;
+}

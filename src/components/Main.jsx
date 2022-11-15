@@ -51,9 +51,8 @@ const Main = () => {
 
   useEffect(() => {
     const fetchData = async () => {
-      console.log(currentUser, 'overheeere')
       const data = await userRoutines(currentUser.username)
-console.log(data, 'heeeelp')
+
       setAllUserRoutines(data)
     }
     fetchData()

@@ -101,3 +101,21 @@ export async function userRoutines(username) {
     console.error(error)
   }
 }
+
+export async function userInfo() {
+  try {
+    const options = {
+      method: "GET",
+      headers: {
+        "Content-type" : "application/json",
+        "Authorization" : `Bearer ${localStorage.getItem("token")}`
+      },
+    }
+    const response = await fetch(`${BASE_URL}/api/users/me`, options)
+    const result = await response.json()
+    return result
+  } catch (error) {
+    console.error(error)
+  }
+}
+

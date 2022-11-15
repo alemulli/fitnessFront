@@ -6,7 +6,7 @@ const MyRoutines = (props) => {
 
   return (
     <div id="myRoutines">
-        <h2>myRoutines:</h2>
+        <h2>myRoutines</h2>
         <div className="myRoutines">
           {allUserRoutines ? allUserRoutines.map((routine, index) => {
             return (

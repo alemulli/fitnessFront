@@ -24,6 +24,7 @@ const Register = (props) => {
             localStorage.setItem("token", response.token)
             setLoggedIn(response.token)
             setRegistering(false)
+            setError(null)
         } else {
             setLoggedIn(false)
             setError("User already exists")

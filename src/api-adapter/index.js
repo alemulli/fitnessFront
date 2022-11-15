@@ -13,7 +13,6 @@ export async function login(username, password) {
       },
       body: JSON.stringify({ username, password }),
     };
-    console.log(username, password, "here")
     const response = await fetch(`${BASE_URL}/api/users/login`, options);
     const result = await response.json();
     return result;
@@ -23,6 +22,24 @@ export async function login(username, password) {
 }
 
 //register
+export async function register(username, password) {
+  try {
+    const options = {
+      method: "POST",
+      headers: {
+        "Content-type": "application/json",
+      },
+      body: JSON.stringify({
+        username, password
+      }),
+    };
+    const response = await fetch(`${BASE_URL}/api/users/register`, options)
+    const result = await response.json();
+    return result
+  } catch (error) {
+    console.error(error)
+  }
+}
 
 //get all public routines
 

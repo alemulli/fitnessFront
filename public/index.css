@@ -102,3 +102,7 @@ body {
   background-color: #060606;
   border: none;
 }
+
+#navbar button:hover {
+  cursor: pointer;
+}

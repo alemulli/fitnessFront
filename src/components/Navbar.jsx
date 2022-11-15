@@ -4,7 +4,7 @@ import { NavLink } from "react-router-dom";
 const Navbar = (props) => {
   const setLoggingIn=props.setLoggingIn
   const setRegistering=props.setRegistering
-
+  const setLoggedIn = props.setLoggedIn
   async function startLoginMenu () {
     setLoggingIn(true)
   }
@@ -14,7 +14,8 @@ const Navbar = (props) => {
   }
 
   async function logout () {
-    console.log("The logout button was pressed!")
+    localStorage.removeItem("token")
+    setLoggedIn(false)
   }
 
   return (
@@ -41,10 +42,10 @@ const Navbar = (props) => {
         ):(
           <>
           <NavLink to="/myroutines">
-            <button>My Routines</button>
+            <button>MY ROUTINES</button>
             </NavLink>            
             <span>  -  </span>
-            <button className="logOutButton" onClick={logout}>Logout</button>
+            <button className="logOutButton" onClick={logout}>LOGOUT</button>
           </>
         )}
       </div>

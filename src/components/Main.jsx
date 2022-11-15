@@ -57,7 +57,7 @@ const Main = () => {
   return (
     <Router>
       <div id="main">
-        <Navbar setLoggingIn={setLoggingIn} setRegistering={setRegistering}/>
+        <Navbar setLoggingIn={setLoggingIn} setRegistering={setRegistering} setLoggedIn={setLoggedIn}/>
           <Routes>
             <Route path="/" element={<Home />} />
             <Route path="/activities" element={<Activities allActivities={allActivities}/>} />
@@ -65,7 +65,7 @@ const Main = () => {
             <Route path="/routines" element={<Routines allRoutines={allRoutines}/>} />
           </Routes>
           <Login loggingIn={loggingIn} setLoggingIn={setLoggingIn} setLoggedIn={setLoggedIn} error={error} setError={setError}/>
-          <Register registering={registering} setRegistering={setRegistering} />
+          <Register registering={registering} setRegistering={setRegistering} setLoggedIn={setLoggedIn} error={error} setError={setError}/>
       </div>
     </Router>
   );

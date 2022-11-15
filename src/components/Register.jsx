@@ -4,13 +4,32 @@ import { register } from "../api-adapter";
 const Register = (props) => {
     const registering = props.registering
     const setRegistering = props.setRegistering
+    const setLoggedIn = props.setLoggedIn
+    const error = props.error 
+    const setError = props.setError
 
     async function closeRegisterMenu () {
         setRegistering(false)
     }
 
     async function handleSubmit(event){
-        console.log('I HIT SUBMIT')
+        event.preventDefault()
+        const username = event.target[0].value
+        const password = event.target[1].value
+        const response = await register(username, password)
+        console.log(username, "username", password, "password")
+        console.log(response, "this is the response")
+        localStorage.removeItem("token")
+        if (response && response.token) {
+            localStorage.setItem("token", response.token)
+            setLoggedIn(response.token)
+            setRegistering(false)
+        } else {
+            setLoggedIn(false)
+            setError("User already exists")
+        }
+        event.target[0].value = ''
+        event.target[1].value = '' 
     }
 
     return(

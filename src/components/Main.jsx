@@ -17,7 +17,8 @@ import {
 import {
   getActivities,
   getRoutines,
-  userRoutines
+  userRoutines,
+  userInfo
 } from "../api-adapter"
 
 const Main = () => {
@@ -29,6 +30,7 @@ const Main = () => {
   const [error, setError] = useState(null)
   const [addActivityMenu, setAddActivityMenu] = useState(false)
   const [allUserRoutines, setAllUserRoutines] = useState([])
+  const [currentUser, setCurrentUser] = useState({})
 
   //checking if there is a token in local storage
   useEffect(() => {
@@ -49,13 +51,22 @@ const Main = () => {
 
   useEffect(() => {
     const fetchData = async () => {
-      const data = await userRoutines()
-
+      console.log(currentUser, 'overheeere')
+      const data = await userRoutines(currentUser.username)
+console.log(data, 'heeeelp')
       setAllUserRoutines(data)
     }
     fetchData()
-  }, [])
+  }, [currentUser])
 
+  useEffect(() => {
+    const fetchData = async () => {
+      const data = await userInfo()
+
+      setCurrentUser(data)
+    }
+    fetchData()
+  }, [loggedIn])
 
   useEffect(() => {
     const fetchData = async () => {

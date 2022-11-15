@@ -30,14 +30,15 @@ export async function register(username, password) {
         "Content-type": "application/json",
       },
       body: JSON.stringify({
-        username, password
+        username,
+        password,
       }),
     };
-    const response = await fetch(`${BASE_URL}/api/users/register`, options)
+    const response = await fetch(`${BASE_URL}/api/users/register`, options);
     const result = await response.json();
-    return result
+    return result;
   } catch (error) {
-    console.error(error)
+    console.error(error);
   }
 }
 
@@ -56,6 +57,27 @@ export async function getRoutines() {
 export async function getActivities() {
   try {
     const response = await fetch(`${BASE_URL}/api/activities`);
+    const result = await response.json();
+    return result;
+  } catch (error) {
+    console.error(error);
+  }
+}
+
+export async function createActivity(name, description) {
+  try {
+    const options = {
+      method: "POST",
+      headers: {
+        "Content-type": "application/json",
+        "Authorization": `Bearer ${localStorage.getItem("token")}`
+      },
+      body: JSON.stringify({
+        name,
+        description,
+      }),
+    };
+    const response = await fetch(`${BASE_URL}/api/activities/`, options);
     const result = await response.json();
     return result;
   } catch (error) {

@@ -7,6 +7,7 @@ import {
   Routines,
   Login,
   Register,
+  CreateActivity
  } from './'
 import {
   BrowserRouter as Router,
@@ -25,6 +26,7 @@ const Main = () => {
   const [registering, setRegistering] = useState(false)
   const [loggedIn, setLoggedIn] = useState(false)
   const [error, setError] = useState(null)
+  const [addActivityMenu, setAddActivityMenu] = useState(false)
 
   //checking if there is a token in local storage
   useEffect(() => {
@@ -60,12 +62,13 @@ const Main = () => {
         <Navbar setLoggingIn={setLoggingIn} setRegistering={setRegistering} setLoggedIn={setLoggedIn}/>
           <Routes>
             <Route path="/" element={<Home />} />
-            <Route path="/activities" element={<Activities allActivities={allActivities}/>} />
+            <Route path="/activities" element={<Activities allActivities={allActivities} setAddActivityMenu ={setAddActivityMenu}/>} />
             <Route path="/myroutines" element={<MyRoutines />} />
             <Route path="/routines" element={<Routines allRoutines={allRoutines}/>} />
           </Routes>
           <Login loggingIn={loggingIn} setLoggingIn={setLoggingIn} setLoggedIn={setLoggedIn} error={error} setError={setError}/>
           <Register registering={registering} setRegistering={setRegistering} setLoggedIn={setLoggedIn} error={error} setError={setError}/>
+          <CreateActivity addActivityMenu = {addActivityMenu} setAddActivityMenu = {setAddActivityMenu} error={error} setError={setError} allActivities={allActivities} setAllActivities={setAllActivities}/>
       </div>
     </Router>
   );

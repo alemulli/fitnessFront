@@ -10,7 +10,7 @@ const Activities = (props) => {
 
   return (
     <div id="Activities">
-      <h2>I am activities</h2>
+      <h2>Activities</h2>
       {localStorage.getItem("token") ? (
         <>
           <span

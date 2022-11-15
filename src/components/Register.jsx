@@ -21,14 +21,10 @@ const Register = (props) => {
     event.preventDefault();
     const username = registerInfo.username;
     const password = registerInfo.password;
-    const confirmPassword = event.target[2];
 
     if (password.length <= 8) {
       setError("Password must be more than 8 characters long.");
     } else {
-      if (password !== confirmPassword) {
-        setError("Passwords don't match.");
-      } else {
         const response = await register(username, password);
         console.log(username, "username", password, "password");
         console.log(response, "this is the response");
@@ -43,14 +39,13 @@ const Register = (props) => {
           setError("User already exists.");
         }
       }
-    }
+    
 
     setRegisterInfo({
       username: "",
       password: "",
     });
 
-    event.target[2]=''
   }
 
   return (
@@ -82,9 +77,6 @@ const Register = (props) => {
             value={registerInfo.password}
             required
           />
-          <br />
-          <label htmlFor="confirmPassword">Confirm Password: </label>
-          <input id="confirmPassword" type="password" required />
           <br />
           {error ? (<small className="error">{error}</small>): null}
           <button className="submitButton" type="submit">

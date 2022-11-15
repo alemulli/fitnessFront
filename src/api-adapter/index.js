@@ -84,3 +84,20 @@ export async function createActivity(name, description) {
     console.error(error);
   }
 }
+
+export async function userRoutines(username) {
+  try {
+    const options = {
+      method: "GET",
+      headers: {
+        "Content-type" : "application/json",
+        "Authorization" : `Bearer ${localStorage.getItem("token")}`
+      },
+    }
+    const response = await fetch(`${BASE_URL}/api/users/${username}/routines`, options)
+    const result = await response.json()
+    return result
+  } catch (error) {
+    console.error(error)
+  }
+}

@@ -6,7 +6,7 @@ const Routines = (props) => {
 
   return (
     <div id="Routines">
-        <h2>I am Routines</h2>
+        <h2> Routines</h2>
         <div className="allRoutines">
             {allRoutines ? allRoutines.map((routine, index)=>{
                 return(
@@ -14,16 +14,20 @@ const Routines = (props) => {
                     <h2>{routine.name}</h2>
                     <p> Creator: {routine.creatorName} </p>
                     <p> Goals: {routine.goal} </p>
-                    <ul> Activities: 
-                        {allRoutines && allRoutines.activities ? allRoutines.activities.map((activity, index) => {
+                    <p> Activities: </p>
+                    <ul>
+                        {routine.activities.map ((activity, index) => {
                             return (
                                 <>
                                 <li> {activity.name} </li>
-                                <li> hello </li>
+                                <ul>
+                                    <li> Duration: {activity.duration} minutes</li>
+                                    <li> Count: {activity.count} repetitions</li>
+                                </ul>
                                 </>
                             )
 
-                        }):null}
+                        })}
                     </ul>
                 </div>
                 )

@@ -16,7 +16,8 @@ import {
 } from "react-router-dom"
 import {
   getActivities,
-  getRoutines
+  getRoutines,
+  userRoutines
 } from "../api-adapter"
 
 const Main = () => {
@@ -27,6 +28,7 @@ const Main = () => {
   const [loggedIn, setLoggedIn] = useState(false)
   const [error, setError] = useState(null)
   const [addActivityMenu, setAddActivityMenu] = useState(false)
+  const [allUserRoutines, setAllUserRoutines] = useState([])
 
   //checking if there is a token in local storage
   useEffect(() => {
@@ -43,6 +45,15 @@ const Main = () => {
       setAllRoutines(data);
     }
     fetchData();
+  }, [])
+
+  useEffect(() => {
+    const fetchData = async () => {
+      const data = await userRoutines()
+
+      setAllUserRoutines(data)
+    }
+    fetchData()
   }, [])
 
 
@@ -63,7 +74,7 @@ const Main = () => {
           <Routes>
             <Route path="/" element={<Home />} />
             <Route path="/activities" element={<Activities allActivities={allActivities} setAddActivityMenu ={setAddActivityMenu}/>} />
-            <Route path="/myroutines" element={<MyRoutines />} />
+            <Route path="/myroutines" element={<MyRoutines allUserRoutines = {allUserRoutines} setAllUserRoutines = {setAllUserRoutines}/>} />
             <Route path="/routines" element={<Routines allRoutines={allRoutines}/>} />
           </Routes>
           <Login loggingIn={loggingIn} setLoggingIn={setLoggingIn} setLoggedIn={setLoggedIn} error={error} setError={setError}/>

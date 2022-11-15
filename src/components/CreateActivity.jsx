@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import { createActivity } from "../api-adapter";
 
 const CreateActivity = (props) => {
@@ -9,26 +9,30 @@ const CreateActivity = (props) => {
     const error = props.error
     const setError = props.setError
 
+    const [activityInfo, setActivityInfo] = useState({
+        name: "",
+        description: ""
+    })
+
     async function closeAddActivityMenu () {
         setAddActivityMenu(false)
         setError(null)
     }
 
-async function handleSubmit(event) {
-    event.preventDefault()
-    const name = event.target[0].value
-    const description = event.target[1].value
-    const response = await createActivity(name, description)
-    if (response.name === 'activity already exists') {
-        setError("The Activity already exists.")
-    }
-    else {
-        setAllActivities([...allActivities,response])
-        setAddActivityMenu(false)
-    }
+    async function handleSubmit(event) {
+        event.preventDefault()
+        const name = activityInfo.name
+        const description = activityInfo.description
+        const response = await createActivity(name, description)
+        if (response.name === 'activity already exists') {
+            setError("The Activity already exists.")
+        }
+        else {
+            setAllActivities([...allActivities,response])
+            setAddActivityMenu(false)
+        }
 
-    event.target[0].value = ''
-    event.target[1].value = '' 
+    setActivityInfo({ name: "", description: ""})
 }
 
     return(
@@ -38,10 +42,10 @@ async function handleSubmit(event) {
         <form onSubmit={handleSubmit}>
             <h3>Add Activity</h3>
             <label htmlFor="name">Activity Name: </label>
-            <input id="name" type="text" required />
+            <input id="name" type="text" onChange={(e)=> setActivityInfo({...activityInfo, name: e.target.value})} value={activityInfo.name} required />
             <br/>
             <label htmlFor="description">Activity Description: </label>
-            <input id="description" type="text" required />
+            <input id="description" type="text" onChange={(e)=> setActivityInfo({...activityInfo, description: e.target.value})} value={activityInfo.description} required />
             {error ? (<small className="error">{error}</small>): null}
             
             <br/>

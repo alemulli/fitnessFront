@@ -11,10 +11,18 @@ const Activities = (props) => {
   return (
     <div id="Activities">
       <h2>I am activities</h2>
-      <span className="material-symbols-outlined" onClick={openAddActivityMenu}>
-        add_circle
-      </span>
-      <span> Add a New Activity </span>
+      {localStorage.getItem("token") ? (
+        <>
+          <span
+            className="material-symbols-outlined"
+            onClick={openAddActivityMenu}
+          >
+            add_circle
+          </span>
+          <span> Add a New Activity </span>
+        </>
+      ) : null}
+
       <div className="allActivities">
         {allActivities
           ? allActivities.map((activity, index) => {

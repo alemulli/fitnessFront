@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import { login } from "../api-adapter";
 
 const Login = (props) => {
@@ -8,6 +8,11 @@ const Login = (props) => {
     const error = props.error
     const setError = props.setError
 
+    const [loginInfo, setLoginInfo]=useState({
+        username: "",
+        password: ""
+    })
+
     async function closeLoginMenu () {
         setLoggingIn(false)
         setError(null)
@@ -15,11 +20,10 @@ const Login = (props) => {
 
     async function handleSubmit(event){
         event.preventDefault();
-        const username = event.target[0].value;
-        const password = event.target[1].value;
+        const username = loginInfo.username;
+        const password = loginInfo.password;
         const response = await login(username, password)
-        // console.log(username, "username", password, "password")
-        // console.log(response, "this is the response")
+
         localStorage.removeItem("token");
         if (response && response.token) {
             localStorage.setItem("token", response.token);
@@ -33,8 +37,10 @@ const Login = (props) => {
 
         }
     //resetting the login form inputs
-        event.target[0].value = ''
-        event.target[1].value = ''  
+        setLoginInfo({
+            username: "",
+            password: ""
+        })  
     }
 
     return(
@@ -44,10 +50,10 @@ const Login = (props) => {
         <form onSubmit={handleSubmit}>
             <h3>Login</h3>
             <label htmlFor="username">Username: </label>
-            <input id="username" type="text" required />
+            <input id="username" type="text" onChange={(e)=> setLoginInfo({...loginInfo, username: e.target.value})} value={loginInfo.username} required />
             <br/>
             <label htmlFor="password">Password: </label>
-            <input id="password" type="password" required />
+            <input id="password" type="password" onChange={(e)=> setLoginInfo({...loginInfo, password: e.target.value})} value={loginInfo.password} required />
             {error ? (<small className="error">{error}</small>): null}
             
             <br/>

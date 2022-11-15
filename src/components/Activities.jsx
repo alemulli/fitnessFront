@@ -29,6 +29,7 @@ const Activities = (props) => {
               return (
                 <div className="oneActivity" key={index}>
                   <h2> {activity.name} </h2>
+                  <p> {activity.description} </p>
                 </div>
               );
             })

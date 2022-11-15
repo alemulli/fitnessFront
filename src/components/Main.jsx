@@ -23,6 +23,16 @@ const Main = () => {
   const [allActivities, setAllActivities] = useState ([])
   const [loggingIn, setLoggingIn] = useState(false)
   const [registering, setRegistering] = useState(false)
+  const [loggedIn, setLoggedIn] = useState(false)
+  const [error, setError] = useState(null)
+
+  //checking if there is a token in local storage
+  useEffect(() => {
+    const userLogIn = localStorage.getItem("token")
+    if (userLogIn) {
+      setLoggedIn(userLogIn)
+    }
+  }, [loggedIn])
 
   useEffect(()=>{
     const fetchData = async () => {
@@ -54,7 +64,7 @@ const Main = () => {
             <Route path="/myroutines" element={<MyRoutines />} />
             <Route path="/routines" element={<Routines allRoutines={allRoutines}/>} />
           </Routes>
-          <Login loggingIn={loggingIn} setLoggingIn={setLoggingIn} />
+          <Login loggingIn={loggingIn} setLoggingIn={setLoggingIn} setLoggedIn={setLoggedIn} error={error} setError={setError}/>
           <Register registering={registering} setRegistering={setRegistering} />
       </div>
     </Router>

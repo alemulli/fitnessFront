@@ -4,7 +4,7 @@
 const BASE_URL = "http://localhost:8080";
 
 //login
-export async function login() {
+export async function login(username, password) {
   try {
     const options = {
       method: "POST",
@@ -13,7 +13,7 @@ export async function login() {
       },
       body: JSON.stringify({ username, password }),
     };
-
+    console.log(username, password, "here")
     const response = await fetch(`${BASE_URL}/api/users/login`, options);
     const result = await response.json();
     return result;

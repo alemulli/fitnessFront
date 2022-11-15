@@ -24,9 +24,9 @@ const Navbar = (props) => {
       <div className="menuContainer">
       <NavLink to="/"><button>HOME</button></NavLink>
       <span>  -  </span>
-      <NavLink to="/"><button>ROUTINES</button></NavLink>
+      <NavLink to="/routines"><button>ROUTINES</button></NavLink>
       <span>  -  </span>
-      <NavLink to="/"><button>ACTIVITIES</button></NavLink>
+      <NavLink to="/activities"><button>ACTIVITIES</button></NavLink>
       <span>  -  </span>
         {!localStorage.token ? (
           <>

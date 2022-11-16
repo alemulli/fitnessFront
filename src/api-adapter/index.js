@@ -142,3 +142,25 @@ export async function createRoutine(creatorId, isPublic, name, goal ) {
     console.error(error);
   }
 }
+
+export async function addActivityToRoutine(routineId, activityId, count, duration) {
+  try {
+    const options = {
+      method: "POST",
+      headers: {
+        "Content-type": "application/json",
+      },
+      body: JSON.stringify({
+        routineId, 
+        activityId, 
+        count, 
+        duration
+      }),
+    };
+    const response = await fetch(`${BASE_URL}/api/routines/${routineId}/activities`, options);
+    const result = await response.json();
+    return result;
+  } catch (error) {
+    console.error(error);
+  }
+}

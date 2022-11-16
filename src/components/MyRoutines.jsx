@@ -23,7 +23,7 @@ const MyRoutines = (props) => {
         </>
       ) : null}
         <div className="myRoutines">
-          {allUserRoutines.length ? allUserRoutines.map((routine, index) => {
+          {allUserRoutines && allUserRoutines.length ? allUserRoutines.map((routine, index) => {
             return (
               <div className="oneRoutine" key={routine.id}>
                     <h2>{routine.name}</h2>
@@ -32,7 +32,7 @@ const MyRoutines = (props) => {
                     <p> Goals: {routine.goal} </p>
                     <p> Activities: </p>
                     <ul>
-                        {routine.activities.map ((activity, index) => {
+                        {routine && routine.activities ? routine.activities.map ((activity, index) => {
                             return (
                                 <div className="oneRoutineActivity" key={activity.routineActivityId}>
                                 <li> {activity.name} </li>
@@ -43,7 +43,7 @@ const MyRoutines = (props) => {
                                 </div>
                             )
 
-                        })}
+                        }): null}
                     </ul>
                 </div>
             )

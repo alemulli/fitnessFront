@@ -7,7 +7,8 @@ const CreateRoutine = (props) => {
     const allRoutines = props.allRoutines
     const setAllRoutines = props.setAllRoutines
     const currentUser = props.currentUser
-    //may also need to pass down user routines and set user routines
+    const allUserRoutines = props.allUserRoutines
+    const setAllUserRoutines = props.setAllUserRoutines
 
     const [routineInfo, setRoutineInfo] = useState({
         isPublic: false,
@@ -28,6 +29,7 @@ const CreateRoutine = (props) => {
         const response = await createRoutine(creatorId, isPublic, name, goal)
 
         setAllRoutines([...allRoutines,response])
+        setAllUserRoutines([...allUserRoutines, response])
         setAddRoutineMenu(false)
      
 
@@ -49,7 +51,7 @@ const CreateRoutine = (props) => {
             <input id="name1" type="text" onChange={(e)=> setRoutineInfo({...routineInfo, name: e.target.value})} value={routineInfo.name} required />
             <br/>
             <label htmlFor="goal">Routine Goal: </label>
-            <input id="goal" type="text" onChange={(e)=> setRoutineInfo({...routineInfo, description: e.target.value})} value={routineInfo.description} required />
+            <input id="goal" type="text" onChange={(e)=> setRoutineInfo({...routineInfo, goal: e.target.value})} value={routineInfo.goal} required />
             <br/>
             <label htmlFor="isPublic">Publicly available? </label>
             <input id="isPublic" type="checkbox" onChange={(e)=> setRoutineInfo({...routineInfo, isPublic: e.target.value})} value={routineInfo.isPublic}/>

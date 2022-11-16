@@ -114,7 +114,7 @@ const Main = () => {
           <Login loggingIn={loggingIn} setLoggingIn={setLoggingIn} setLoggedIn={setLoggedIn} error={error} setError={setError}/>
           <Register registering={registering} setRegistering={setRegistering} setLoggedIn={setLoggedIn} error={error} setError={setError}/>
           <CreateActivity addActivityMenu = {addActivityMenu} setAddActivityMenu = {setAddActivityMenu} error={error} setError={setError} allActivities={allActivities} setAllActivities={setAllActivities}/>
-          <CreateRoutine addRoutineMenu={addRoutineMenu} setAddRoutineMenu={setAddRoutineMenu} allRoutines={allRoutines} setAllRoutines={setAllRoutines} currentUser = {currentUser}/> 
+          <CreateRoutine addRoutineMenu={addRoutineMenu} setAddRoutineMenu={setAddRoutineMenu} allRoutines={allRoutines} setAllRoutines={setAllRoutines} currentUser = {currentUser} allUserRoutines={allUserRoutines} setAllUserRoutines={setAllUserRoutines}/> 
       </div>
     </Router>
   );

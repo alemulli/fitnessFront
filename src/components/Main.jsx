@@ -7,7 +7,8 @@ import {
   Routines,
   Login,
   Register,
-  CreateActivity
+  CreateActivity, 
+  CreateRoutine,
  } from './'
 import {
   BrowserRouter as Router,
@@ -31,6 +32,7 @@ const Main = () => {
   const [addActivityMenu, setAddActivityMenu] = useState(false)
   const [allUserRoutines, setAllUserRoutines] = useState([])
   const [currentUser, setCurrentUser] = useState({})
+  const [addRoutineMenu, setAddRoutineMenu] = useState(false)
 
   //checking if there is a token in local storage
   useEffect(() => {
@@ -102,12 +104,13 @@ const Main = () => {
           <Routes>
             <Route path="/" element={<Home />} />
             <Route path="/activities" element={<Activities allActivities={allActivities} setAddActivityMenu ={setAddActivityMenu}/>} />
-            <Route path="/myroutines" element={<MyRoutines allUserRoutines = {allUserRoutines} setAllUserRoutines = {setAllUserRoutines}/>} />
+            <Route path="/myroutines" element={<MyRoutines allUserRoutines = {allUserRoutines} setAllUserRoutines = {setAllUserRoutines} setAddRoutineMenu={setAddRoutineMenu}/>} />
             <Route path="/routines" element={<Routines allRoutines={allRoutines}/>} />
           </Routes>
           <Login loggingIn={loggingIn} setLoggingIn={setLoggingIn} setLoggedIn={setLoggedIn} error={error} setError={setError}/>
           <Register registering={registering} setRegistering={setRegistering} setLoggedIn={setLoggedIn} error={error} setError={setError}/>
           <CreateActivity addActivityMenu = {addActivityMenu} setAddActivityMenu = {setAddActivityMenu} error={error} setError={setError} allActivities={allActivities} setAllActivities={setAllActivities}/>
+          {/* <CreateRoutine addRoutineMenu={addRoutineMenu} setAddRoutineMenu={setAddRoutineMenu} allRoutines={allRoutines} setAllRoutines={setAllRoutines} />  */}
       </div>
     </Router>
   );

@@ -14,7 +14,7 @@ body {
 }
 
 /* LOGIN AND REGISTER POP UP MENUS */
-#loginMenu.true, #registerMenu.true, #addActivityMenu.true {
+#loginMenu.true, #registerMenu.true, #addActivityMenu.true,  #addRoutineMenu.true{
   z-index: 1;
   display: flex;
   justify-content: space-around;
@@ -28,11 +28,11 @@ body {
   
 }
 
-#loginMenu.false, #registerMenu.false, #addActivityMenu.false {
+#loginMenu.false, #registerMenu.false, #addActivityMenu.false, #addRoutineMenu.false {
   display: none;
 }
 
-.loginMenu, .registerMenu, .addActivityMenu {
+.loginMenu, .registerMenu, .addActivityMenu, .addRoutineMenu {
   max-width: 50vw;
   min-width: 30vw;
   display: flex;
@@ -45,7 +45,7 @@ body {
   border: white 1px solid;
 }
 
-.loginMenu form, .registerMenu form, .addActivityMenu form {
+.loginMenu form, .registerMenu form, .addActivityMenu form, .addRoutineMenu form{
   height: 100%;
   width: 100%;
   display: flex;
@@ -77,6 +77,15 @@ body {
 }
 
 .addActivityMenu h3, button {
+  align-self: center;
+}
+
+.addRoutineMenu input, textarea, input:focus {
+  background-color: #060606;
+  color: white;
+}
+
+.addRoutineMenu h3, button {
   align-self: center;
 }
 

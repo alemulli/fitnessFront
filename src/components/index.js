@@ -10,3 +10,4 @@ export { default as Login } from "./Login";
 export { default as Register } from "./Register";
 export { default as CreateActivity } from "./CreateActivity";
 export { default as Logo } from "./Logo";
+export { default as CreateRoutine } from "./CreateRoutine";

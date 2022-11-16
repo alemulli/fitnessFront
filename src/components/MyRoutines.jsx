@@ -3,10 +3,26 @@ import React from "react";
 const MyRoutines = (props) => {
   const allUserRoutines = props.allUserRoutines
   const setAllUserRoutines = props.setAllUserRoutines
+  const setAddRoutineMenu = props.setAddRoutineMenu;
+
+  async function openAddRoutineMenu() {
+    setAddActivityMenu(true);
+  }
 
   return (
     <div id="myRoutines">
         <h2>myRoutines</h2>
+        {localStorage.getItem("token") ? (
+        <>
+          <span
+            className="material-symbols-outlined"
+            onClick={openAddRoutineMenu}
+          >
+            add_circle
+          </span>
+          <span> Add a New Routine </span>
+        </>
+      ) : null}
         <div className="myRoutines">
           {allUserRoutines.length ? allUserRoutines.map((routine, index) => {
             return (

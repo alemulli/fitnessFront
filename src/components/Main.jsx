@@ -37,7 +37,23 @@ const Main = () => {
     const userLogIn = localStorage.getItem("token")
     if (userLogIn) {
       setLoggedIn(userLogIn)
+
+      const fetchData = async () => {
+        const data = await userInfo()
+
+        setCurrentUser(data)
+      }
+      fetchData()
+      //then
+        const fectchMoreData = async () => {
+          const moreData = await userRoutines(currentUser.username)
+
+          setAllUserRoutines(moreData)
+        }
+        fectchMoreData()
     }
+
+
   }, [loggedIn])
 
   useEffect(()=>{
@@ -49,23 +65,25 @@ const Main = () => {
     fetchData();
   }, [])
 
-  useEffect(() => {
-    const fetchData = async () => {
-      const data = await userRoutines(currentUser.username)
 
-      setAllUserRoutines(data)
-    }
-    fetchData()
-  }, [currentUser])
+  //all moved into the first use effect in order to avoid errors on load when not logged in
+  // useEffect(() => {
+  //   const fetchData = async () => {
+  //     const data = await userRoutines(currentUser.username)
 
-  useEffect(() => {
-    const fetchData = async () => {
-      const data = await userInfo()
+  //     setAllUserRoutines(data)
+  //   }
+  //   fetchData()
+  // }, [currentUser])
 
-      setCurrentUser(data)
-    }
-    fetchData()
-  }, [loggedIn])
+  // useEffect(() => {
+  //   const fetchData = async () => {
+  //     const data = await userInfo()
+
+  //     setCurrentUser(data)
+  //   }
+  //   fetchData()
+  // }, [loggedIn])
 
   useEffect(() => {
     const fetchData = async () => {

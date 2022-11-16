@@ -1,11 +1,14 @@
 import React from "react";
-import { NavLink } from "react-router-dom";
+import { useNavigate, NavLink } from "react-router-dom";
 import { Logo } from "./"
 
 const Navbar = (props) => {
   const setLoggingIn=props.setLoggingIn
   const setRegistering=props.setRegistering
   const setLoggedIn = props.setLoggedIn
+
+  const navigate = useNavigate()
+
   async function startLoginMenu () {
     setLoggingIn(true)
   }
@@ -17,6 +20,7 @@ const Navbar = (props) => {
   async function logout () {
     localStorage.removeItem("token")
     setLoggedIn(false)
+    navigate("/")
   }
 
   return (

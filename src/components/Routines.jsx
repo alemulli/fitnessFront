@@ -9,6 +9,7 @@ const Routines = (props) => {
         <h2> Routines</h2>
         <div className="allRoutines">
             {allRoutines ? allRoutines.map((routine, index)=>{
+                if (routine.isPublic) {
                 return(
                 <div className="oneRoutine" key={routine.id}>
                     <h2>{routine.name}</h2>
@@ -31,7 +32,7 @@ const Routines = (props) => {
                     </ul>
                 </div>
                 )
-            }):null}
+            }}):null}
         </div>
   </div>
   );

@@ -108,7 +108,7 @@ const Main = () => {
           <Routes>
             <Route path="/" element={<Home />} />
             <Route path="/activities" element={<Activities allActivities={allActivities} setAddActivityMenu ={setAddActivityMenu}/>} />
-            <Route path="/myroutines" element={<MyRoutines allUserRoutines = {allUserRoutines} setAllUserRoutines = {setAllUserRoutines} setAddRoutineMenu={setAddRoutineMenu}/>} />
+            <Route path="/myroutines" element={<MyRoutines allUserRoutines = {allUserRoutines} setAllUserRoutines = {setAllUserRoutines} setAddRoutineMenu={setAddRoutineMenu}allActivities={allActivities}/>} />
             <Route path="/routines" element={<Routines allRoutines={allRoutines}/>} />
           </Routes>
           <Login loggingIn={loggingIn} setLoggingIn={setLoggingIn} setLoggedIn={setLoggedIn} error={error} setError={setError}/>

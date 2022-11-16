@@ -2,8 +2,9 @@ import React from "react";
 
 const MyRoutines = (props) => {
   const allUserRoutines = props.allUserRoutines
-  const setAllUserRoutines = props.setAllUserRoutines
   const setAddRoutineMenu = props.setAddRoutineMenu;
+  const allActivities=props.allActivities
+
   async function openAddRoutineMenu() {
     setAddRoutineMenu(true);
   }
@@ -44,6 +45,16 @@ const MyRoutines = (props) => {
                             )
 
                         }): null}
+                        <li id="addActivityToRoutine">
+                          <span className="material-symbols-outlined">add_circle</span>
+                    <span>Add an Activity to the Routine</span><form>
+                      <select id="pickActivity">
+                        {allActivities ? allActivities.map((activity, index)=>{return(
+                          <option value={activity.name} key={activity.id}>{activity.name}</option>
+                        )}) : null}
+                      </select>
+                    </form>
+                        </li>
                     </ul>
                 </div>
             )

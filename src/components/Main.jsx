@@ -47,16 +47,20 @@ const Main = () => {
       }
       fetchData()
       //then
-        const fectchMoreData = async () => {
-          const moreData = await userRoutines(currentUser.username)
 
-          setAllUserRoutines(moreData)
-        }
-        fectchMoreData()
     }
 
 
   }, [loggedIn])
+  useEffect(()=>{
+            const fetchMoreData = async () => {
+          const moreData = await userRoutines(currentUser.username)
+
+          setAllUserRoutines(moreData)
+        }
+        fetchMoreData()
+  },[currentUser])
+
 
   useEffect(()=>{
     const fetchData = async () => {
@@ -110,7 +114,7 @@ const Main = () => {
           <Login loggingIn={loggingIn} setLoggingIn={setLoggingIn} setLoggedIn={setLoggedIn} error={error} setError={setError}/>
           <Register registering={registering} setRegistering={setRegistering} setLoggedIn={setLoggedIn} error={error} setError={setError}/>
           <CreateActivity addActivityMenu = {addActivityMenu} setAddActivityMenu = {setAddActivityMenu} error={error} setError={setError} allActivities={allActivities} setAllActivities={setAllActivities}/>
-          {/* <CreateRoutine addRoutineMenu={addRoutineMenu} setAddRoutineMenu={setAddRoutineMenu} allRoutines={allRoutines} setAllRoutines={setAllRoutines} />  */}
+          <CreateRoutine addRoutineMenu={addRoutineMenu} setAddRoutineMenu={setAddRoutineMenu} allRoutines={allRoutines} setAllRoutines={setAllRoutines} /> 
       </div>
     </Router>
   );

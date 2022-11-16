@@ -3,10 +3,10 @@ import React, { useState } from "react";
 //doesn't exist yet
 
 const CreateRoutine = (props) => {
-    const addRoutineMenu = props.addActivityMenu
-    const setAddRoutineMenu = props.setAddActivityMenu
-    const allRoutines = props.allActivities
-    const setAllRoutines = props.setAllActivities
+    const addRoutineMenu = props.addRoutineMenu
+    const setAddRoutineMenu = props.setAddRoutineMenu
+    const allRoutines = props.allRoutines
+    const setAllRoutines = props.setAllRoutines
     //may also need to pass down user routines and set user routines
 
     const [routineInfo, setRoutineInfo] = useState({
@@ -24,19 +24,19 @@ const CreateRoutine = (props) => {
         const name = routineInfo.name
         const goal = routineInfo.goal
         const isPublic = routineInfo.isPublic
-        // const response = await createRoutine(isPublic, name, goal)
+        const response = await createRoutine(isPublic, name, goal)
         console.log("THIS IS A PLACEHOLDER!")
 
-        // setAllRoutines([...allRoutines,response])
-        // setAddRoutineMenu(false)
-        }
+        setAllRoutines([...allRoutines,response])
+        setAddRoutineMenu(false)
+     
 
     setRoutineInfo({
         isPublic: false,
         name: "",
         description: ""
     })
-
+   }
 
     return(
         <div className={`${addRoutineMenu}`} id="addRoutineMenu">

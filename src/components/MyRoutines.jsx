@@ -12,7 +12,8 @@ const MyRoutines = (props) => {
             return (
               <div className="oneRoutine" key={routine.id}>
                     <h2>{routine.name}</h2>
-                    <p> Creator: {routine.creatorName} </p>
+                    <p> <span>Available Publicly?: </span>
+                    {routine.isPublic ? (<span>Yes</span>) :(<span>No</span>)} </p>
                     <p> Goals: {routine.goal} </p>
                     <p> Activities: </p>
                     <ul>

@@ -1,18 +1,18 @@
 import React, { useState } from "react";
-// import { createRoutine } from "../api-adapter";
-//doesn't exist yet
+import { createRoutine } from "../api-adapter";
 
 const CreateRoutine = (props) => {
     const addRoutineMenu = props.addRoutineMenu
     const setAddRoutineMenu = props.setAddRoutineMenu
     const allRoutines = props.allRoutines
     const setAllRoutines = props.setAllRoutines
+    const currentUser = props.currentUser
     //may also need to pass down user routines and set user routines
 
     const [routineInfo, setRoutineInfo] = useState({
         isPublic: false,
         name: "",
-        description: ""
+        goal: ""
     })
 
     async function closeAddRoutineMenu () {
@@ -24,8 +24,8 @@ const CreateRoutine = (props) => {
         const name = routineInfo.name
         const goal = routineInfo.goal
         const isPublic = routineInfo.isPublic
-        const response = await createRoutine(isPublic, name, goal)
-        console.log("THIS IS A PLACEHOLDER!")
+        const creatorId = currentUser.id
+        const response = await createRoutine(creatorId, isPublic, name, goal)
 
         setAllRoutines([...allRoutines,response])
         setAddRoutineMenu(false)
@@ -34,9 +34,10 @@ const CreateRoutine = (props) => {
     setRoutineInfo({
         isPublic: false,
         name: "",
-        description: ""
+        goal: ""
     })
    }
+
 
     return(
         <div className={`${addRoutineMenu}`} id="addRoutineMenu">

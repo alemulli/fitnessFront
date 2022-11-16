@@ -4,7 +4,6 @@ const MyRoutines = (props) => {
   const allUserRoutines = props.allUserRoutines
   const setAllUserRoutines = props.setAllUserRoutines
   const setAddRoutineMenu = props.setAddRoutineMenu;
-console.log(props)
   async function openAddRoutineMenu() {
     setAddRoutineMenu(true);
   }

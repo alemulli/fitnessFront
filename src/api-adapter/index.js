@@ -119,3 +119,26 @@ export async function userInfo() {
   }
 }
 
+export async function createRoutine(creatorId, isPublic, name, goal ) {
+  try {
+    const options = {
+      method: "POST",
+      headers: {
+        "Content-type": "application/json",
+        "Authorization": `Bearer ${localStorage.getItem("token")}`
+      },
+      body: JSON.stringify({
+        creatorId,
+         isPublic, 
+         name,
+        goal
+    
+      }),
+    };
+    const response = await fetch(`${BASE_URL}/api/routines/`, options);
+    const result = await response.json();
+    return result;
+  } catch (error) {
+    console.error(error);
+  }
+}

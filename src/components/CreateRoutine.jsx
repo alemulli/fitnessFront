@@ -54,7 +54,7 @@ const CreateRoutine = (props) => {
             <input id="goal" type="text" onChange={(e)=> setRoutineInfo({...routineInfo, goal: e.target.value})} value={routineInfo.goal} required />
             <br/>
             <label htmlFor="isPublic">Publicly available? </label>
-            <input id="isPublic" type="checkbox" onChange={(e)=> setRoutineInfo({...routineInfo, isPublic: e.target.value})} value={routineInfo.isPublic}/>
+            <input id="isPublic" type="checkbox" checked={routineInfo.isPublic} onChange={(e)=> setRoutineInfo({...routineInfo, isPublic: !routineInfo.isPublic})}/>
             <br/>
             <button className="submitButton" type="submit">SUBMIT</button>
         </form>

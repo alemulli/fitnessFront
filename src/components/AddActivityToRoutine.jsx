@@ -7,7 +7,7 @@ const AddActivityToRoutine = (props) => {
   const allActivities = props.allActivities;
 
   const [routineActivityInfo, setRoutineActivityInfo] = useState({
-    name: "",
+    id: "",
     duration:"",
     count: ""
 })
@@ -39,7 +39,7 @@ async function handleSubmit(event) {
             {allActivities
               ? allActivities.map((activity, index) => {
                   return (
-                    <option value={activity.name} key={activity.id}>
+                    <option value={activity.id} key={activity.id}>
                       {activity.name}
                     </option>
                   );
@@ -48,23 +48,23 @@ async function handleSubmit(event) {
           </select>
           <label htmlFor="count">Count: </label>
           <input
-            id="name"
+            id="count"
             type="number"
             onChange={(e) =>
-                setRoutineActivityInfo({ ...routineActivityInfo, name: e.target.value })
+                setRoutineActivityInfo({ ...routineActivityInfo, count: e.target.value })
             }
-            value={routineActivityInfo.name}
+            value={routineActivityInfo.count}
             required
           />
           <br />
           <label htmlFor="duration"> Duration: </label>
           <input
-            id="description"
+            id="duration"
             type="number"
             onChange={(e) =>
-                setRoutineActivityInfo({ ...routineActivityInfo, description: e.target.value })
+                setRoutineActivityInfo({ ...routineActivityInfo, duration: e.target.value })
             }
-            value={routineActivityInfo.description}
+            value={routineActivityInfo.duration}
             required
           />
          

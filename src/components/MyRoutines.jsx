@@ -1,37 +1,28 @@
-import React from "react";
+import React, {useState} from "react";
+import { 
+  CreateRoutine,
+  AddActivityToRoutine,
+  EditRoutine,
+  EditRoutineActivity,
+  SingleRoutine
+} from "./"
 
 const MyRoutines = (props) => {
   const allUserRoutines = props.allUserRoutines;
-  const setAddRoutineMenu = props.setAddRoutineMenu;
-  const setAddActivityToRoutineMenu = props.setAddActivityToRoutineMenu;
-  const setEditRoutineMenu = props.setEditRoutineMenu;
-  const setEditRoutineActivityMenu = props.setEditRoutineActivityMenu;
-  const setSelectedRoutine = props.setSelectedRoutine
+  const setAllUserRoutines = props.setAllUserRoutines
+  const allRoutines = props.allRoutines
+  const setAllRoutines = props.setAllRoutines
+  const currentUser = props.currentUser
+  const allActivities = props.allActivities
+
+  const [addRoutineMenu, setAddRoutineMenu] = useState(false);
+  const [addActivityToRoutineMenu, setAddActivityToRoutineMenu] = useState(false);
+  const [editRoutineMenu, setEditRoutineMenu] = useState(false);
+  const [editRoutineActivityMenu, setEditRoutineActivityMenu] = useState(false);
+  const [selectedRoutine , setSelectedRoutine ] = useState();
 
   async function openAddRoutineMenu() {
     setAddRoutineMenu(true);
-  }
-
-  async function openAddActivityToRoutineMenu() {
-    setAddActivityToRoutineMenu(true);
-  }
-
-  async function openEditRoutineMenu() {
-    setEditRoutineMenu(true);
-  }
-
-  async function openEditRoutineActivityMenu() {
-    setEditRoutineActivityMenu(true);
-  }
-
-  async function deleteRoutine() {
-    console.log(
-      "hey, you didn't delete it yet because we haven't written the function"
-    );
-  }
-
-  async function deleteRoutineActivity() {
-    console.log("all you have done is pressed a button");
   }
 
   return (
@@ -53,83 +44,37 @@ const MyRoutines = (props) => {
         {allUserRoutines && allUserRoutines.length ? (
           allUserRoutines.map((routine, index) => {
             return (
-              <div className="oneRoutine" key={routine.id}>
-                <h2>
-                  {routine.name}
-                  <span
-                    alt="Edit Routine"
-                    onClick={openEditRoutineMenu}
-                    className="material-symbols-outlined"
-                  >
-                    edit
-                  </span>
-                  <span
-                    alt="Delete Routine"
-                    onClick={deleteRoutine}
-                    className="material-symbols-outlined"
-                  >
-                    delete
-                  </span>
-                </h2>
-                <p>
-                  
-                  <span>Available Publicly?: </span>
-                  {routine.isPublic ? <span>Yes</span> : <span>No</span>}
-                </p>
-                <p> Goals: {routine.goal} </p>
-                <p> Activities: </p>
-                <ul>
-                  {routine && routine.activities
-                    ? routine.activities.map((activity, index) => {
-                        return (
-                          <div
-                            className="oneRoutineActivity"
-                            key={activity.routineActivityId}
-                          >
-                            <li>
-                              
-                              {activity.name}
-                              <span
-                                alt="Edit Routine Activity Duration and Count"
-                                onClick={openEditRoutineActivityMenu}
-                                className="material-symbols-outlined"
-                              >
-                                edit
-                              </span>
-                              <span
-                                alt="Delete Routine Activity"
-                                onClick={deleteRoutineActivity}
-                                className="material-symbols-outlined"
-                              >
-                                delete
-                              </span>
-                            </li>
-                            <ul>
-                              <li> Duration: {activity.duration} minutes</li>
-                              <li> Count: {activity.count} repetitions</li>
-                            </ul>
-                          </div>
-                        );
-                      })
-                    : null}
-                  <li id="addActivityToRoutine">
-                    <span
-                      className="material-symbols-outlined"
-                      onClick={openAddActivityToRoutineMenu}
-                      alt="Add and Activity to the Routine"
-                    >
-                      add_circle
-                    </span>
-                    <span>Add an Activity to the Routine</span>
-                  </li>
-                </ul>
-              </div>
+              <SingleRoutine key={`${routine.id}`} routine={routine} setAddActivityToRoutineMenu={setAddActivityToRoutineMenu} setEditRoutineMenu={setEditRoutineMenu} setEditRoutineActivityMenu={setEditRoutineActivityMenu} setSelectedRoutine={setSelectedRoutine}/>
             );
           })
         ) : (
           <p>You have no routines yet!</p>
         )}
       </div>
+      <CreateRoutine
+          addRoutineMenu={addRoutineMenu}
+          setAddRoutineMenu={setAddRoutineMenu}
+          allRoutines={allRoutines}
+          setAllRoutines={setAllRoutines}
+          currentUser={currentUser}
+          allUserRoutines={allUserRoutines}
+          setAllUserRoutines={setAllUserRoutines}
+        />
+        <AddActivityToRoutine
+          addActivityToRoutineMenu={addActivityToRoutineMenu}
+          setAddActivityToRoutineMenu={setAddActivityToRoutineMenu}
+          allActivities={allActivities}
+          setSelectedRoutine = {setSelectedRoutine}
+          selectedRoutine = {selectedRoutine}
+        />
+        <EditRoutine 
+          editRoutineMenu={editRoutineMenu}
+          setEditRoutineMenu={setEditRoutineMenu}
+        />
+        <EditRoutineActivity 
+          editRoutineActivityMenu={editRoutineActivityMenu}
+          setEditRoutineActivityMenu={setEditRoutineActivityMenu}
+        />
     </div>
   );
 };

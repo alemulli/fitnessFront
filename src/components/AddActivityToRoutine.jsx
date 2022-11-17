@@ -19,21 +19,18 @@ const AddActivityToRoutine = (props) => {
   async function closeAddActivityToRoutineMenu() {
     setAddActivityToRoutineMenu(false);
   }
-  console.log("line 22")
   async function handleSubmit(event) {
     event.preventDefault();
     const routineId = Number(selectedRoutine);
     const activityId = Number(routineActivityInfo.id);
     const duration = Number(routineActivityInfo.duration);
     const count = Number(routineActivityInfo.count);
-    console.log("line 29")
     const response = await addActivityToRoutine(
       routineId,
       activityId,
       count,
       duration
     );
-    console.log("line 36")
     setRoutineActivityInfo({ id: 1, duration: 0, count: 0 });
     setAddActivityToRoutineMenu(false)
     setSelectedRoutine()

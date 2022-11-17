@@ -8,10 +8,6 @@ import {
   Login,
   Register,
   CreateActivity,
-  CreateRoutine,
-  AddActivityToRoutine,
-  EditRoutine,
-  EditRoutineActivity,
 } from "./";
 import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
 import {
@@ -31,11 +27,7 @@ const Main = () => {
   const [addActivityMenu, setAddActivityMenu] = useState(false);
   const [allUserRoutines, setAllUserRoutines] = useState([]);
   const [currentUser, setCurrentUser] = useState({});
-  const [addRoutineMenu, setAddRoutineMenu] = useState(false);
-  const [addActivityToRoutineMenu, setAddActivityToRoutineMenu] = useState(false);
-  const [editRoutineMenu, setEditRoutineMenu] = useState(false);
-  const [editRoutineActivityMenu, setEditRoutineActivityMenu] = useState(false);
-  const [selectedRoutine , setSelectedRoutine ] = useState();
+
 
   //checking if there is a token in local storage
   useEffect(() => {
@@ -105,12 +97,11 @@ const Main = () => {
               <MyRoutines
                 allUserRoutines={allUserRoutines}
                 setAllUserRoutines={setAllUserRoutines}
-                setAddRoutineMenu={setAddRoutineMenu}
                 allActivities={allActivities}
-                setAddActivityToRoutineMenu = {setAddActivityToRoutineMenu}
-                setEditRoutineMenu={setEditRoutineMenu}
-                setEditRoutineActivityMenu={setEditRoutineActivityMenu}
-                setSelectedRoutine = {setSelectedRoutine}
+                allRoutines={allRoutines}
+                setAllRoutines={setAllRoutines}
+                currentUser={currentUser}
+
               />
             }
           />
@@ -140,30 +131,6 @@ const Main = () => {
           setError={setError}
           allActivities={allActivities}
           setAllActivities={setAllActivities}
-        />
-        <CreateRoutine
-          addRoutineMenu={addRoutineMenu}
-          setAddRoutineMenu={setAddRoutineMenu}
-          allRoutines={allRoutines}
-          setAllRoutines={setAllRoutines}
-          currentUser={currentUser}
-          allUserRoutines={allUserRoutines}
-          setAllUserRoutines={setAllUserRoutines}
-        />
-        <AddActivityToRoutine
-          addActivityToRoutineMenu={addActivityToRoutineMenu}
-          setAddActivityToRoutineMenu={setAddActivityToRoutineMenu}
-          allActivities={allActivities}
-          setSelectedRoutine = {setSelectedRoutine}
-          selectedRoutine = {selectedRoutine}
-        />
-        <EditRoutine 
-          editRoutineMenu={editRoutineMenu}
-          setEditRoutineMenu={setEditRoutineMenu}
-        />
-        <EditRoutineActivity 
-          editRoutineActivityMenu={editRoutineActivityMenu}
-          setEditRoutineActivityMenu={setEditRoutineActivityMenu}
         />
       </div>
     </Router>

@@ -1,4 +1,5 @@
 import React,{useState} from "react";
+import { destroyRoutine } from "../api-adapter";
 import {RoutineActivity} from "./";
 
 const SingleRoutine = (props) => {
@@ -19,9 +20,8 @@ const SingleRoutine = (props) => {
   }
 
   async function deleteRoutine() {
-    console.log(
-      "hey, you didn't delete anything because we haven't written the function"
-    );
+      const id = routine.id
+      const response = await destroyRoutine(routine.id)
   }
 
 

@@ -6,6 +6,8 @@ const SingleRoutine = (props) => {
     const setEditRoutineMenu = props.setEditRoutineMenu
     const setEditRoutineActivityMenu = props.setEditRoutineActivityMenu
     const setSelectedRoutine = props.setSelectedRoutine
+    const [selectedActivityRoutine, setSelectedActivityRoutine] = useState()
+
 
     async function openAddActivityToRoutineMenu() {
         setAddActivityToRoutineMenu(true)
@@ -26,10 +28,8 @@ const SingleRoutine = (props) => {
         )
     }
 
-    async function deleteRoutineActivity(){
-        console.log(
-            "all you have done is pressed a button"
-        )
+    async function deleteRoutineActivity() {
+
     }
 
  return(

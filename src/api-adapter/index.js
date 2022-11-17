@@ -164,3 +164,20 @@ export async function addActivityToRoutine(routineId, activityId, count, duratio
     console.error(error);
   }
 }
+
+export async function deleteRoutineActivity(routineActivityId) {
+  try {
+    const options = {
+      method: "DELETE",
+      headers: {
+        "Content-type": "application/json",
+        "Authorization": `Bearer  ${localStorage.getItem("token")}`
+      }
+      } 
+      const response = await fetch(`${BASE_URL}/api/routine_activities/${routineActivityId}`, options)
+      const result = await response.json()
+  } catch (error) {
+    console.error(error);
+  }
+
+}

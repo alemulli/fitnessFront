@@ -101,7 +101,6 @@ const Main = () => {
                 allRoutines={allRoutines}
                 setAllRoutines={setAllRoutines}
                 currentUser={currentUser}
-
               />
             }
           />

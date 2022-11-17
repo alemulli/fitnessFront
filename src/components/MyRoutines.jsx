@@ -66,6 +66,8 @@ const MyRoutines = (props) => {
           allActivities={allActivities}
           setSelectedRoutine = {setSelectedRoutine}
           selectedRoutine = {selectedRoutine}
+          allUserRoutines={allUserRoutines}
+          setAllUserRoutines={setAllUserRoutines}
         />
         <EditRoutine 
           editRoutineMenu={editRoutineMenu}

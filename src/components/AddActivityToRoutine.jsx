@@ -7,34 +7,36 @@ const AddActivityToRoutine = (props) => {
   const allActivities = props.allActivities;
   const selectedRoutine = props.selectedRoutine;
   const setSelectedRoutine = props.setSelectedRoutine;
+  const allUserRoutines = props.allUserRoutines;
+  const setAllUserRoutines = props.setAllUserRoutines;
 
   const [routineActivityInfo, setRoutineActivityInfo] = useState({
-    id: "",
-    duration: "",
-    count: "",
+    id: 1,
+    duration: 0,
+    count: 0,
   });
 
   async function closeAddActivityToRoutineMenu() {
     setAddActivityToRoutineMenu(false);
   }
-
+  console.log("line 22")
   async function handleSubmit(event) {
     event.preventDefault();
-    const routineId = selectedRoutine;
-    const activityId = routineActivityInfo.id;
-    const duration = routineActivityInfo.duration;
-    const count = routineActivityInfo.count;
+    const routineId = Number(selectedRoutine);
+    const activityId = Number(routineActivityInfo.id);
+    const duration = Number(routineActivityInfo.duration);
+    const count = Number(routineActivityInfo.count);
+    console.log("line 29")
     const response = await addActivityToRoutine(
       routineId,
       activityId,
       count,
       duration
     );
-
-    // setSelectedRoutine();
-    setRoutineActivityInfo({ id: "", duration: "", count: "" });
+    console.log("line 36")
+    setRoutineActivityInfo({ id: 1, duration: 0, count: 0 });
     setAddActivityToRoutineMenu(false)
-
+    setSelectedRoutine()
   }
 
   return (
@@ -56,7 +58,12 @@ const AddActivityToRoutine = (props) => {
             
             Pick an activity to attach to the routine:
           </label>
-          <select id="pickActivity">
+          <select id="pickActivity" onChange={(e) =>
+              setRoutineActivityInfo({
+                ...routineActivityInfo,
+                id: e.target.value,
+              })
+            }>
             {allActivities
               ? allActivities.map((activity, index) => {
                   return (

@@ -44,7 +44,7 @@ const CreateRoutine = (props) => {
     return(
         <div className={`${addRoutineMenu}`} id="addRoutineMenu">
         <div className="addRoutineMenu">
-        <span className="material-symbols-outlined" onClick={closeAddRoutineMenu}>close</span>
+        <span className="material-symbols-outlined" onClick={closeAddRoutineMenu} alt="Close Menu">close</span>
         <form onSubmit={handleSubmit}>
             <h3>Add Routine</h3>
             <label htmlFor="name1">Routine Name: </label>

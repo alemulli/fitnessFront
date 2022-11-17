@@ -46,7 +46,7 @@ const Login = (props) => {
     return(
         <div className={`${loggingIn}`} id="loginMenu">
         <div className="loginMenu">
-        <span className="material-symbols-outlined" onClick={closeLoginMenu}>close</span>
+        <span className="material-symbols-outlined" onClick={closeLoginMenu} alt="Close Menu">close</span>
         <form onSubmit={handleSubmit}>
             <h3>Login</h3>
             <label htmlFor="username">Username: </label>

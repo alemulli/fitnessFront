@@ -14,12 +14,14 @@ body {
   color: red;
 }
 
-/* LOGIN AND REGISTER POP UP MENUS */
+/* ALL POP UP MENUS */
 #loginMenu.true,
 #registerMenu.true,
 #addActivityMenu.true,
 #addRoutineMenu.true,
-#addActivityToRoutineMenu.true {
+#addActivityToRoutineMenu.true,
+#editRoutineActivityMenu.true,
+#editRoutineMenu.true {
   z-index: 1;
   display: flex;
   justify-content: space-around;
@@ -36,7 +38,9 @@ body {
 #registerMenu.false,
 #addActivityMenu.false,
 #addRoutineMenu.false,
-#addActivityToRoutineMenu.false {
+#addActivityToRoutineMenu.false, 
+#editRoutineActivityMenu.false,
+#editRoutineMenu.false {
   display: none;
 }
 
@@ -44,7 +48,8 @@ body {
 .registerMenu,
 .addActivityMenu,
 .addRoutineMenu,
-.addActivityToRoutineMenu {
+.addActivityToRoutineMenu,
+.editMenu {
   max-width: 50vw;
   min-width: 30vw;
   display: flex;
@@ -61,7 +66,8 @@ body {
 .registerMenu form,
 .addActivityMenu form,
 .addRoutineMenu form,
-.addActivityToRoutineMenu form {
+.addActivityToRoutineMenu form,
+.editMenu form {
   height: 100%;
   width: 100%;
   display: flex;
@@ -125,6 +131,18 @@ input:focus {
 }
 
 .addActivityToRoutineMenu h3,
+button {
+  align-self: center;
+}
+
+.editMenu input,
+textarea,
+input:focus {
+  background-color: #060606;
+  color: white;
+}
+
+.editMenu h3,
 button {
   align-self: center;
 }

@@ -12,3 +12,5 @@ export { default as CreateActivity } from "./CreateActivity";
 export { default as Logo } from "./Logo";
 export { default as CreateRoutine } from "./CreateRoutine";
 export { default as AddActivityToRoutine } from "./AddActivityToRoutine";
+export { default as EditRoutine } from "./EditRoutine";
+export { default as EditRoutineActivity } from "./EditRoutineActivity";

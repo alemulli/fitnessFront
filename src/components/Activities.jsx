@@ -16,6 +16,7 @@ const Activities = (props) => {
           <span
             className="material-symbols-outlined"
             onClick={openAddActivityMenu}
+            alt="Add a New Activity"
           >
             add_circle
           </span>

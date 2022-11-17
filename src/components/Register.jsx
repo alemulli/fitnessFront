@@ -51,7 +51,7 @@ const Register = (props) => {
   return (
     <div className={`${registering}`} id="registerMenu">
       <div className="registerMenu">
-        <span className="material-symbols-outlined" onClick={closeRegisterMenu}>
+        <span className="material-symbols-outlined" onClick={closeRegisterMenu} alt="Close Menu">
           close
         </span>
         <form onSubmit={handleSubmit}>

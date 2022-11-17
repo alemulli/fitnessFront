@@ -38,7 +38,7 @@ const CreateActivity = (props) => {
     return(
         <div className={`${addActivityMenu}`} id="addActivityMenu">
         <div className="addActivityMenu">
-        <span className="material-symbols-outlined" onClick={closeAddActivityMenu}>close</span>
+        <span className="material-symbols-outlined" onClick={closeAddActivityMenu} alt="Close Menu">close</span>
         <form onSubmit={handleSubmit}>
             <h3>Add Activity</h3>
             <label htmlFor="name">Activity Name: </label>

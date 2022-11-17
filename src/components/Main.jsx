@@ -10,6 +10,8 @@ import {
   CreateActivity,
   CreateRoutine,
   AddActivityToRoutine,
+  EditRoutine,
+  EditRoutineActivity,
 } from "./";
 import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
 import {
@@ -30,8 +32,9 @@ const Main = () => {
   const [allUserRoutines, setAllUserRoutines] = useState([]);
   const [currentUser, setCurrentUser] = useState({});
   const [addRoutineMenu, setAddRoutineMenu] = useState(false);
-  const [addActivityToRoutineMenu, setAddActivityToRoutineMenu] =
-    useState(false);
+  const [addActivityToRoutineMenu, setAddActivityToRoutineMenu] = useState(false);
+  const [editRoutineMenu, setEditRoutineMenu] = useState(false);
+  const [editRoutineActivityMenu, setEditRoutineActivityMenu] = useState(false);
 
   //checking if there is a token in local storage
   useEffect(() => {
@@ -48,6 +51,7 @@ const Main = () => {
       //then
     }
   }, [loggedIn]);
+
   useEffect(() => {
     const fetchMoreData = async () => {
       const moreData = await userRoutines(currentUser.username);
@@ -65,25 +69,6 @@ const Main = () => {
     };
     fetchData();
   }, []);
-
-  //all moved into the first use effect in order to avoid errors on load when not logged in
-  // useEffect(() => {
-  //   const fetchData = async () => {
-  //     const data = await userRoutines(currentUser.username)
-
-  //     setAllUserRoutines(data)
-  //   }
-  //   fetchData()
-  // }, [currentUser])
-
-  // useEffect(() => {
-  //   const fetchData = async () => {
-  //     const data = await userInfo()
-
-  //     setCurrentUser(data)
-  //   }
-  //   fetchData()
-  // }, [loggedIn])
 
   useEffect(() => {
     const fetchData = async () => {
@@ -122,6 +107,8 @@ const Main = () => {
                 setAddRoutineMenu={setAddRoutineMenu}
                 allActivities={allActivities}
                 setAddActivityToRoutineMenu = {setAddActivityToRoutineMenu}
+                setEditRoutineMenu={setEditRoutineMenu}
+                setEditRoutineActivityMenu={setEditRoutineActivityMenu}
               />
             }
           />
@@ -165,6 +152,14 @@ const Main = () => {
           addActivityToRoutineMenu={addActivityToRoutineMenu}
           setAddActivityToRoutineMenu={setAddActivityToRoutineMenu}
           allActivities={allActivities}
+        />
+        <EditRoutine 
+          editRoutineMenu={editRoutineMenu}
+          setEditRoutineMenu={setEditRoutineMenu}
+        />
+        <EditRoutineActivity 
+          editRoutineActivityMenu={editRoutineActivityMenu}
+          setEditRoutineActivityMenu={setEditRoutineActivityMenu}
         />
       </div>
     </Router>

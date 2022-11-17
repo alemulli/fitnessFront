@@ -29,6 +29,7 @@ async function handleSubmit(event) {
         <span
           className="material-symbols-outlined"
           onClick={closeAddActivityToRoutineMenu}
+          alt="Close Menu"
         >
           close
         </span>

@@ -5,20 +5,37 @@ const AddActivityToRoutine = (props) => {
   const addActivityToRoutineMenu = props.addActivityToRoutineMenu;
   const setAddActivityToRoutineMenu = props.setAddActivityToRoutineMenu;
   const allActivities = props.allActivities;
+  const selectedRoutine = props.selectedRoutine;
+  const setSelectedRoutine = props.setSelectedRoutine;
 
   const [routineActivityInfo, setRoutineActivityInfo] = useState({
     id: "",
-    duration:"",
-    count: ""
-})
+    duration: "",
+    count: "",
+  });
 
-  async function closeAddActivityToRoutineMenu () {
+  async function closeAddActivityToRoutineMenu() {
+    setAddActivityToRoutineMenu(false);
+  }
+
+  async function handleSubmit(event) {
+    event.preventDefault();
+    const routineId = selectedRoutine;
+    const activityId = routineActivityInfo.id;
+    const duration = routineActivityInfo.duration;
+    const count = routineActivityInfo.count;
+    const response = await addActivityToRoutine(
+      routineId,
+      activityId,
+      count,
+      duration
+    );
+
+    setSelectedRoutine();
+    setRoutineActivityInfo({ id: "", duration: "", count: "" });
     setAddActivityToRoutineMenu(false)
-}
 
-async function handleSubmit(event) {
-    console.log('hi')
-}
+  }
 
   return (
     <div
@@ -35,7 +52,10 @@ async function handleSubmit(event) {
         </span>
         <form onSubmit={handleSubmit}>
           <h3>Add an Activity</h3>
-          <label htmlFor="pickActivity"> Pick an activity to attach to the routine: </label>
+          <label htmlFor="pickActivity">
+            
+            Pick an activity to attach to the routine:
+          </label>
           <select id="pickActivity">
             {allActivities
               ? allActivities.map((activity, index) => {
@@ -52,7 +72,10 @@ async function handleSubmit(event) {
             id="count"
             type="number"
             onChange={(e) =>
-                setRoutineActivityInfo({ ...routineActivityInfo, count: e.target.value })
+              setRoutineActivityInfo({
+                ...routineActivityInfo,
+                count: e.target.value,
+              })
             }
             value={routineActivityInfo.count}
             required
@@ -63,12 +86,15 @@ async function handleSubmit(event) {
             id="duration"
             type="number"
             onChange={(e) =>
-                setRoutineActivityInfo({ ...routineActivityInfo, duration: e.target.value })
+              setRoutineActivityInfo({
+                ...routineActivityInfo,
+                duration: e.target.value,
+              })
             }
             value={routineActivityInfo.duration}
             required
           />
-         
+
           <br />
           <button className="submitButton" type="submit">
             SUBMIT

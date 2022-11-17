@@ -35,6 +35,7 @@ const Main = () => {
   const [addActivityToRoutineMenu, setAddActivityToRoutineMenu] = useState(false);
   const [editRoutineMenu, setEditRoutineMenu] = useState(false);
   const [editRoutineActivityMenu, setEditRoutineActivityMenu] = useState(false);
+  const [selectedRoutine , setSelectedRoutine ] = useState();
 
   //checking if there is a token in local storage
   useEffect(() => {
@@ -109,6 +110,7 @@ const Main = () => {
                 setAddActivityToRoutineMenu = {setAddActivityToRoutineMenu}
                 setEditRoutineMenu={setEditRoutineMenu}
                 setEditRoutineActivityMenu={setEditRoutineActivityMenu}
+                setSelectedRoutine = {setSelectedRoutine}
               />
             }
           />
@@ -152,6 +154,8 @@ const Main = () => {
           addActivityToRoutineMenu={addActivityToRoutineMenu}
           setAddActivityToRoutineMenu={setAddActivityToRoutineMenu}
           allActivities={allActivities}
+          setSelectedRoutine = {setSelectedRoutine}
+          selectedRoutine = {selectedRoutine}
         />
         <EditRoutine 
           editRoutineMenu={editRoutineMenu}

@@ -12,7 +12,7 @@ const SingleRoutine = (props) => {
 
   async function openAddActivityToRoutineMenu() {
     setAddActivityToRoutineMenu(true);
-    setSelectedRoutine(routine.id);
+    setSelectedRoutine(routine);
   }
 
   async function openEditRoutineMenu() {

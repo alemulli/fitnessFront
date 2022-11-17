@@ -21,7 +21,7 @@ const AddActivityToRoutine = (props) => {
   }
   async function handleSubmit(event) {
     event.preventDefault();
-    const routineId = Number(selectedRoutine);
+    const routineId = Number(selectedRoutine.id);
     const activityId = Number(routineActivityInfo.id);
     const duration = Number(routineActivityInfo.duration);
     const count = Number(routineActivityInfo.count);

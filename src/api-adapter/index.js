@@ -165,17 +165,18 @@ export async function addActivityToRoutine(routineId, activityId, count, duratio
   }
 }
 
-export async function deleteRoutineActivity(routineActivityId) {
+export async function destroyRoutineActivity(routineActivityId) {
   try {
     const options = {
       method: "DELETE",
       headers: {
         "Content-type": "application/json",
-        "Authorization": `Bearer  ${localStorage.getItem("token")}`
+        "Authorization": `Bearer ${localStorage.getItem("token")}`
       }
       } 
       const response = await fetch(`${BASE_URL}/api/routine_activities/${routineActivityId}`, options)
       const result = await response.json()
+      return result
   } catch (error) {
     console.error(error);
   }

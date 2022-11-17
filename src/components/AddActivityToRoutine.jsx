@@ -31,7 +31,7 @@ const AddActivityToRoutine = (props) => {
       duration
     );
 
-    setSelectedRoutine();
+    // setSelectedRoutine();
     setRoutineActivityInfo({ id: "", duration: "", count: "" });
     setAddActivityToRoutineMenu(false)
 

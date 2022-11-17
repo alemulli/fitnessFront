@@ -9,18 +9,12 @@ const MyRoutines = (props) => {
   const setSelectedRoutine = props.setSelectedRoutine
 
   async function openAddRoutineMenu() {
-    // setAddRoutineMenu(true);
+    setAddRoutineMenu(true);
   }
 
   async function openAddActivityToRoutineMenu() {
-    // setAddActivityToRoutineMenu(true);
+    setAddActivityToRoutineMenu(true);
   }
-
-async function twoFunctions(routineId) {
-  // openAddActivityToRoutineMenu;
-  setSelectedRoutine(routineId)
-  //make local state, set that state to routineId, make editActivity a child of this component
-}
 
   async function openEditRoutineMenu() {
     setEditRoutineMenu(true);
@@ -121,7 +115,7 @@ async function twoFunctions(routineId) {
                   <li id="addActivityToRoutine">
                     <span
                       className="material-symbols-outlined"
-                      onClick={twoFunctions(routine.id)}
+                      onClick={openAddActivityToRoutineMenu}
                       alt="Add and Activity to the Routine"
                     >
                       add_circle

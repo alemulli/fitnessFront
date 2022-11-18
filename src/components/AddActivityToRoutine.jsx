@@ -1,6 +1,8 @@
 import React, { useState } from "react";
 import { addActivityToRoutine } from "../api-adapter";
 
+//Menu that allows you to add an activity to a routine
+
 const AddActivityToRoutine = (props) => {
   const addActivityToRoutineMenu = props.addActivityToRoutineMenu;
   const setAddActivityToRoutineMenu = props.setAddActivityToRoutineMenu;
@@ -32,9 +34,9 @@ const AddActivityToRoutine = (props) => {
       duration
     );
     setRoutineActivityInfo({ id: 1, duration: 0, count: 0 });
-    setAddActivityToRoutineMenu(false)
-    setSelectedRoutine()
-    //need to rerender!!!
+    setAddActivityToRoutineMenu(false);
+    setSelectedRoutine();
+    //need to rerender!!! we've imported alluserroutines as a prop in case that is the one we need for rerender
   }
 
   return (
@@ -53,18 +55,21 @@ const AddActivityToRoutine = (props) => {
         <form onSubmit={handleSubmit}>
           <h3>Add an Activity</h3>
           <label htmlFor="pickActivity">
-            
             Pick an activity to attach to the routine:
           </label>
-          <select id="pickActivity" onChange={(e) =>
+          <select
+            id="pickActivity"
+            onChange={(e) =>
               setRoutineActivityInfo({
                 ...routineActivityInfo,
                 id: e.target.value,
               })
-            }>
+            }
+          >
             {allActivities
               ? allActivities.map((activity, index) => {
                   return (
+                    //does not currently filter out activities that the routine already has, can we add an if statement?
                     <option value={activity.id} key={activity.id}>
                       {activity.name}
                     </option>

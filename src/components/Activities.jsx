@@ -1,10 +1,15 @@
-import React from "react";
+import React, { useState } from "react";
+import { CreateActivity } from "./";
 
 //component renders all activities in the db, there is a button that opens a menu to add a new activity
 
 const Activities = (props) => {
   const allActivities = props.allActivities;
-  const setAddActivityMenu = props.setAddActivityMenu;
+  const error = props.error;
+  const setError = props.setError;
+  const setAllActivities = props.setAllActivities;
+
+  const [addActivityMenu, setAddActivityMenu] = useState(false);
 
   async function openAddActivityMenu() {
     setAddActivityMenu(true);
@@ -38,6 +43,14 @@ const Activities = (props) => {
             })
           : null}
       </div>
+      <CreateActivity
+        addActivityMenu={addActivityMenu}
+        setAddActivityMenu={setAddActivityMenu}
+        error={error}
+        setError={setError}
+        allActivities={allActivities}
+        setAllActivities={setAllActivities}
+      />
     </div>
   );
 };

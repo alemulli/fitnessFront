@@ -14,5 +14,5 @@ export { default as CreateRoutine } from "./CreateRoutine";
 export { default as AddActivityToRoutine } from "./AddActivityToRoutine";
 export { default as EditRoutine } from "./EditRoutine";
 export { default as EditRoutineActivity } from "./EditRoutineActivity";
-export { default as SingleRoutine } from "./SingleRoutine"
-export { default as RoutineActivity} from "./RoutineActivity"
+export { default as SingleRoutine } from "./SingleRoutine";
+export { default as RoutineActivity } from "./RoutineActivity";

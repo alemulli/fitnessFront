@@ -1,6 +1,8 @@
 import React, { useState } from "react";
 import { register } from "../api-adapter";
 
+//Menu that allows you to register a new account
+
 const Register = (props) => {
   const registering = props.registering;
   const setRegistering = props.setRegistering;
@@ -25,33 +27,35 @@ const Register = (props) => {
     if (password.length <= 8) {
       setError("Password must be more than 8 characters long.");
     } else {
-        const response = await register(username, password);
-        console.log(username, "username", password, "password");
-        console.log(response, "this is the response");
-        localStorage.removeItem("token");
-        if (response && response.token) {
-          localStorage.setItem("token", response.token);
-          setLoggedIn(response.token);
-          setRegistering(false);
-          setError(null);
-        } else {
-          setLoggedIn(false);
-          setError("User already exists.");
-        }
+      const response = await register(username, password);
+      console.log(username, "username", password, "password");
+      console.log(response, "this is the response");
+      localStorage.removeItem("token");
+      if (response && response.token) {
+        localStorage.setItem("token", response.token);
+        setLoggedIn(response.token);
+        setRegistering(false);
+        setError(null);
+      } else {
+        setLoggedIn(false);
+        setError("User already exists.");
       }
-    
+    }
 
     setRegisterInfo({
       username: "",
       password: "",
     });
-
   }
 
   return (
     <div className={`${registering}`} id="registerMenu">
       <div className="registerMenu">
-        <span className="material-symbols-outlined" onClick={closeRegisterMenu} alt="Close Menu">
+        <span
+          className="material-symbols-outlined"
+          onClick={closeRegisterMenu}
+          alt="Close Menu"
+        >
           close
         </span>
         <form onSubmit={handleSubmit}>
@@ -78,7 +82,7 @@ const Register = (props) => {
             required
           />
           <br />
-          {error ? (<small className="error">{error}</small>): null}
+          {error ? <small className="error">{error}</small> : null}
           <button className="submitButton" type="submit">
             SUBMIT
           </button>

@@ -1,14 +1,5 @@
 import React, { useEffect, useState } from "react";
-import {
-  Navbar,
-  Activities,
-  Home,
-  MyRoutines,
-  Routines,
-  Login,
-  Register,
-  CreateActivity,
-} from "./";
+import { Navbar, Activities, Home, MyRoutines, Routines, UsersRoutines } from "./";
 import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
 import {
   getActivities,
@@ -20,14 +11,11 @@ import {
 const Main = () => {
   const [allRoutines, setAllRoutines] = useState([]);
   const [allActivities, setAllActivities] = useState([]);
-  const [loggingIn, setLoggingIn] = useState(false);
-  const [registering, setRegistering] = useState(false);
   const [loggedIn, setLoggedIn] = useState(false);
   const [error, setError] = useState(null);
-  const [addActivityMenu, setAddActivityMenu] = useState(false);
   const [allUserRoutines, setAllUserRoutines] = useState([]);
   const [currentUser, setCurrentUser] = useState({});
-
+  const [specificUser, setSpecificUser] = useState()
 
   //checking if there is a token in local storage
   useEffect(() => {
@@ -41,7 +29,6 @@ const Main = () => {
         setCurrentUser(data);
       };
       fetchData();
-      //then
     }
   }, [loggedIn]);
 
@@ -75,11 +62,7 @@ const Main = () => {
   return (
     <Router>
       <div id="main">
-        <Navbar
-          setLoggingIn={setLoggingIn}
-          setRegistering={setRegistering}
-          setLoggedIn={setLoggedIn}
-        />
+        <Navbar setLoggedIn={setLoggedIn} error={error} setError={setError} />
         <Routes>
           <Route path="/" element={<Home />} />
           <Route
@@ -87,7 +70,9 @@ const Main = () => {
             element={
               <Activities
                 allActivities={allActivities}
-                setAddActivityMenu={setAddActivityMenu}
+                error={error}
+                setError={setError}
+                setAllActivities={setAllActivities}
               />
             }
           />
@@ -106,31 +91,13 @@ const Main = () => {
           />
           <Route
             path="/routines"
-            element={<Routines allRoutines={allRoutines} />}
+            element={<Routines allRoutines={allRoutines} setSpecificUser={setSpecificUser}/>}
+          />
+          <Route
+            path="/UsersRoutines"
+            element={<UsersRoutines specificUser={specificUser}/>}
           />
         </Routes>
-        <Login
-          loggingIn={loggingIn}
-          setLoggingIn={setLoggingIn}
-          setLoggedIn={setLoggedIn}
-          error={error}
-          setError={setError}
-        />
-        <Register
-          registering={registering}
-          setRegistering={setRegistering}
-          setLoggedIn={setLoggedIn}
-          error={error}
-          setError={setError}
-        />
-        <CreateActivity
-          addActivityMenu={addActivityMenu}
-          setAddActivityMenu={setAddActivityMenu}
-          error={error}
-          setError={setError}
-          allActivities={allActivities}
-          setAllActivities={setAllActivities}
-        />
       </div>
     </Router>
   );

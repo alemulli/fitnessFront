@@ -1,6 +1,8 @@
-import React,{useState} from "react";
+import React, { useState } from "react";
 import { destroyRoutine } from "../api-adapter";
-import {RoutineActivity} from "./";
+import { RoutineActivity } from "./";
+
+//child component of MyRoutines that renders out each individual routines, is the parent routine of RoutineActivity when mapping over the activities of a specific routine, there are buttons that allow you to delete a routine and to edit the name, goal, and whether a routine is public or not
 
 const SingleRoutine = (props) => {
   const routine = props.routine;
@@ -8,7 +10,11 @@ const SingleRoutine = (props) => {
   const setEditRoutineMenu = props.setEditRoutineMenu;
   const setEditRoutineActivityMenu = props.setEditRoutineActivityMenu;
   const setSelectedRoutine = props.setSelectedRoutine;
+  const allUserRoutines = props.allUserRoutines
+  const setAllUserRoutines = props.setAllUserRoutines
+
   const [selectedActivityRoutine, setSelectedActivityRoutine] = useState();
+  const [routinesActivities, setRoutinesActivities] = useState([routine.activities])
 
   async function openAddActivityToRoutineMenu() {
     setAddActivityToRoutineMenu(true);
@@ -20,10 +26,12 @@ const SingleRoutine = (props) => {
   }
 
   async function deleteRoutine() {
-      const id = routine.id
-      const response = await destroyRoutine(routine.id)
-  }
+    const id = routine.id;
+    const response = await destroyRoutine(routine.id);
 
+    //this was my attempt at rerendering but it didn't work, something is undefined? do I need to tie this back to one of the useEffects?
+    setAllUserRoutines(allUserRoutines.filter(routine => {if(routine !== response){return true}}))
+  }
 
   return (
     <div className="oneRoutine">
@@ -58,8 +66,12 @@ const SingleRoutine = (props) => {
                   className="oneRoutineActivity"
                   key={activity.routineActivityId}
                 >
-                  <RoutineActivity 
-                  activity = {activity} />
+                  <RoutineActivity
+                    activity={activity}
+                    setEditRoutineActivityMenu={setEditRoutineActivityMenu}
+                    routinesActivities={routinesActivities}
+                    setRoutinesActivities={setRoutinesActivities}
+                  />
                 </div>
               );
             })

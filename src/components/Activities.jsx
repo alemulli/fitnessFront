@@ -1,5 +1,7 @@
 import React from "react";
 
+//component renders all activities in the db, there is a button that opens a menu to add a new activity
+
 const Activities = (props) => {
   const allActivities = props.allActivities;
   const setAddActivityMenu = props.setAddActivityMenu;

@@ -42,7 +42,7 @@ export async function register(username, password) {
   }
 }
 
-//get all public routines
+//get all routines (public and private)
 
 export async function getRoutines() {
   try {
@@ -54,6 +54,7 @@ export async function getRoutines() {
   }
 }
 
+//get all activities
 export async function getActivities() {
   try {
     const response = await fetch(`${BASE_URL}/api/activities`);
@@ -64,6 +65,7 @@ export async function getActivities() {
   }
 }
 
+//post new activity
 export async function createActivity(name, description) {
   try {
     const options = {
@@ -85,6 +87,7 @@ export async function createActivity(name, description) {
   }
 }
 
+//get all users routines (public, and private if token)
 export async function userRoutines(username) {
   try {
     const options = {
@@ -102,6 +105,7 @@ export async function userRoutines(username) {
   }
 }
 
+//get user info
 export async function userInfo() {
   try {
     const options = {
@@ -119,6 +123,7 @@ export async function userInfo() {
   }
 }
 
+//post new routine
 export async function createRoutine(creatorId, isPublic, name, goal ) {
   try {
     const options = {
@@ -143,6 +148,7 @@ export async function createRoutine(creatorId, isPublic, name, goal ) {
   }
 }
 
+//post: add an activity to a routine
 export async function addActivityToRoutine(routineId, activityId, count, duration) {
   try {
     const options = {
@@ -165,6 +171,7 @@ export async function addActivityToRoutine(routineId, activityId, count, duratio
   }
 }
 
+//delete an activity from a routine
 export async function destroyRoutineActivity(routineActivityId) {
   try {
     const options = {
@@ -182,6 +189,7 @@ export async function destroyRoutineActivity(routineActivityId) {
   }
 }
 
+//delete a routine
 export async function destroyRoutine (id) {
   try {
     const options = {

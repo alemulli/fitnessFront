@@ -1,5 +1,12 @@
 import React, { useEffect, useState } from "react";
-import { Navbar, Activities, Home, MyRoutines, Routines, UsersRoutines } from "./";
+import {
+  Navbar,
+  Activities,
+  Home,
+  MyRoutines,
+  Routines,
+  UsersRoutines,
+} from "./";
 import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
 import {
   getActivities,
@@ -15,9 +22,8 @@ const Main = () => {
   const [error, setError] = useState(null);
   const [allUserRoutines, setAllUserRoutines] = useState([]);
   const [currentUser, setCurrentUser] = useState({});
-  const [specificUser, setSpecificUser] = useState()
+  const [specificUser, setSpecificUser] = useState();
   const [selectedRoutine, setSelectedRoutine] = useState({});
-
 
   //checking if there is a token in local storage
   useEffect(() => {
@@ -66,7 +72,10 @@ const Main = () => {
       <div id="main">
         <Navbar setLoggedIn={setLoggedIn} error={error} setError={setError} />
         <Routes>
-          <Route path="/" element={<Home />} />
+          <Route
+            path="/"
+            element={<Home currentUser={currentUser} loggedIn={loggedIn} />}
+          />
           <Route
             path="/activities"
             element={
@@ -95,11 +104,16 @@ const Main = () => {
           />
           <Route
             path="/routines"
-            element={<Routines allRoutines={allRoutines} setSpecificUser={setSpecificUser}/>}
+            element={
+              <Routines
+                allRoutines={allRoutines}
+                setSpecificUser={setSpecificUser}
+              />
+            }
           />
           <Route
             path="/UsersRoutines"
-            element={<UsersRoutines specificUser={specificUser}/>}
+            element={<UsersRoutines specificUser={specificUser} />}
           />
         </Routes>
       </div>

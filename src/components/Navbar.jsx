@@ -33,6 +33,7 @@ const Navbar = (props) => {
       <div id="logo">
         <Logo />
       </div>
+      <div className="navbarWords">
       <h2>Fitness Trackr</h2>
       <div className="menuContainer">
         <NavLink to="/">
@@ -67,7 +68,7 @@ const Navbar = (props) => {
               LOGOUT
             </button>
           </>
-        )}
+        )}</div>
       </div>
       <Login
         loggingIn={loggingIn}

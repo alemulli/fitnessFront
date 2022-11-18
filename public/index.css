@@ -1,13 +1,59 @@
+* {
+  font-family:"Quicksand";
+}
+
 input,
 input:focus {
   border-style: solid;
 }
 
-body {
+body, #app {
   font-family: "Raleway", Arial, sans-serif;
   height: 100vh;
   width: 100vw;
   margin: 0;
+  background-color: #1e1e1e;
+
+
+}
+
+#main {
+  background-color: #060606;
+  color: white;
+  max-width: 70vw;
+  margin: auto;
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+
+#home {
+  display: flex;
+  padding-left: 30px;
+  font-size: 14px;
+  flex-direction: column;
+}
+
+.homepic {
+  padding-top: 20px;
+  width: 95%;
+}
+
+#Routines {
+  padding: 20px;
+}
+
+.oneRoutine h2 {
+  font-size: 19px;
+  text-decoration: underline;
+}
+
+.pageName {
+  font-size: 25px;
+}
+
+.oneRoutine a {
+  color: lightblue;
 }
 
 .error {
@@ -169,6 +215,17 @@ button {
 #navbar {
   background-color: #060606;
   color: white;
+  padding: 10px;
+  display: flex;
+}
+
+#navbar h2 {
+  font-size: 35px;
+  margin: 0;
+}
+
+.navbarWords {
+  padding-left: 40px;
 }
 
 #navbar a,
@@ -182,6 +239,7 @@ button {
 #navbar button:hover {
   cursor: pointer;
   font-weight: bolder;
+  text-decoration: underline;
 }
 
 #logo {

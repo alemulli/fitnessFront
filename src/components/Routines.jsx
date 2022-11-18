@@ -9,7 +9,7 @@ const Routines = (props) => {
 
   return (
     <div id="Routines">
-      <h2> Routines</h2>
+      <h2 className="pageName"> Routines</h2>
       <div className="allRoutines">
         {allRoutines
           ? allRoutines.map((routine, index) => {

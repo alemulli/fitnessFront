@@ -1,28 +1,26 @@
-import React from "react";
+import React, {useState} from "react";
 import { destroyRoutineActivity } from "../api-adapter";
 
 //child component of SingleRoutine that renders out each individual routines, contains buttons that allows you to edit the duration and count or delete a routine activity
 
 const RoutineActivity = (props) => {
-  const activity = props.activity;
   const setEditRoutineActivityMenu = props.setEditRoutineActivityMenu;
   const routinesActivities = props.routinesActivities
   const setRoutinesActivities = props.setRoutinesActivities
+  const [activity, setActivity] = useState(props.activity)
 
   async function deleteRoutineActivity() {
     const routineId = activity.routineActivityId;
     const response = await destroyRoutineActivity(activity.routineActivityId);
 
-
-    //this was my attempt at rerendering but it didn't work, do I need to tie this back to one of the useEffects?
-    setRoutinesActivities(routinesActivities.filter(activity => {if (activity !== response) {return true}}))
+    !response.error && setActivity(false)
   }
 
   async function openEditRoutineActivityMenu() {
     setEditRoutineActivityMenu(true);
   }
 
-  return (
+  return (<>{activity ?
     <>
       <li>
         {activity.name}
@@ -46,7 +44,8 @@ const RoutineActivity = (props) => {
         <li> Count: {activity.count} repetitions</li>
       </ul>
     </>
-  );
+ 
+  :null}</> );
 };
 
 export default RoutineActivity;

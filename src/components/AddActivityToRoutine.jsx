@@ -36,7 +36,6 @@ const AddActivityToRoutine = (props) => {
     setRoutineActivityInfo({ id: 1, duration: 0, count: 0 });
     setAddActivityToRoutineMenu(false);
     setSelectedRoutine();
-    //need to rerender!!! we've imported alluserroutines as a prop in case that is the one we need for rerender
   }
 
   return (

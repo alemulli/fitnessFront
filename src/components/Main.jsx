@@ -16,6 +16,8 @@ const Main = () => {
   const [allUserRoutines, setAllUserRoutines] = useState([]);
   const [currentUser, setCurrentUser] = useState({});
   const [specificUser, setSpecificUser] = useState()
+  const [selectedRoutine, setSelectedRoutine] = useState();
+
 
   //checking if there is a token in local storage
   useEffect(() => {
@@ -39,7 +41,7 @@ const Main = () => {
       setAllUserRoutines(moreData);
     };
     fetchMoreData();
-  }, [currentUser]);
+  }, [currentUser][selectedRoutine]);
 
   useEffect(() => {
     const fetchData = async () => {
@@ -86,6 +88,8 @@ const Main = () => {
                 allRoutines={allRoutines}
                 setAllRoutines={setAllRoutines}
                 currentUser={currentUser}
+                selectedRoutine={selectedRoutine}
+                setSelectedRoutine={setSelectedRoutine}
               />
             }
           />

@@ -41,7 +41,7 @@ const Main = () => {
       setAllUserRoutines(moreData);
     };
     fetchMoreData();
-  }, [currentUser, selectedRoutine]);
+  }, [currentUser]);
 
   useEffect(() => {
     const fetchData = async () => {

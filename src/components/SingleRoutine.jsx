@@ -17,6 +17,7 @@ const SingleRoutine = (props) => {
   const [routinesActivities, setRoutinesActivities] = useState([routine.activities])
   const editRoutineMenu = props.editRoutineMenu
   const editRoutineActivityMenu = props.editRoutineActivityMenu
+  const selectedRoutine = props.selectedRoutine
 
   async function openAddActivityToRoutineMenu() {
     setAddActivityToRoutineMenu(true);
@@ -95,6 +96,7 @@ const SingleRoutine = (props) => {
         editRoutineMenu={editRoutineMenu}
         setEditRoutineMenu={setEditRoutineMenu}
         routine = {routine}
+        selectedRoutine={selectedRoutine}
         />
     </div>
  :null}</> );

@@ -7,6 +7,7 @@ const EditRoutine = (props) => {
   const editRoutineMenu = props.editRoutineMenu;
   const setEditRoutineMenu = props.setEditRoutineMenu;
   const routine = props.routine;
+  const selectedRoutine = props.selectedRoutine
   //props for updating allRoutines?
   //props for updating allUserRoutines?
   //props for errors?
@@ -26,7 +27,7 @@ const EditRoutine = (props) => {
   async function handleSubmit(event) {
     event.preventDefault();
     const routineId = routine.id;
-
+    console.log(editRoutineInfo, "this is the editRoutineInfo")
     const name = editRoutineInfo.name;
     const goal = editRoutineInfo.goal;
     const isPublic = editRoutineInfo.isPublic;

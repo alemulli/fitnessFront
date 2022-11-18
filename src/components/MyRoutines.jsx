@@ -54,6 +54,7 @@ const MyRoutines = (props) => {
                 setAddActivityToRoutineMenu={setAddActivityToRoutineMenu}
                 setEditRoutineMenu={setEditRoutineMenu}
                 setEditRoutineActivityMenu={setEditRoutineActivityMenu}
+                selectedRoutine={selectedRoutine}
                 setSelectedRoutine={setSelectedRoutine}
                 editRoutineMenu = {editRoutineMenu}
                 editRoutineActivityMenu = {editRoutineActivityMenu}

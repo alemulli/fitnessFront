@@ -1,23 +1,30 @@
-import React from "react";
-import { NavLink } from "react-router-dom";
+import React, {useState, useEffect} from "react";
+import { userRoutines } from "../api-adapter";
 
-//component renders all routines in the db
+//child component of SingleRoutine that renders out each individual routines, contains buttons that allows you to edit the duration and count or delete a routine activity
 
-const Routines = (props) => {
-  const allRoutines = props.allRoutines;
-  const setSpecificUser = props.setSpecificUser
+const UsersRoutines = (props) => {
+    const specificUser = props.specificUser
+    const [thisUsersRoutines, setThisUsersRoutines] = useState([])
+
+    useEffect(() => {
+        const fetchData = async () => {
+          const data = await userRoutines(specificUser);
+    
+          setThisUsersRoutines(data);
+        };
+        fetchData();
+      }, []);
 
   return (
-    <div id="Routines">
-      <h2> Routines</h2>
-      <div className="allRoutines">
-        {allRoutines
-          ? allRoutines.map((routine, index) => {
+    <>
+     <h2>{specificUser}'s Routines</h2>
+     {thisUsersRoutines
+          ? thisUsersRoutines.map((routine, index) => {
               if (routine.isPublic) {
                 return (
                   <div className="oneRoutine" key={routine.id}>
                     <h2>{routine.name}</h2>
-                    <p> Creator: <NavLink to='/UsersRoutines' onClick={(function(){setSpecificUser(routine.creatorName)})}>{routine.creatorName}</NavLink> </p>
                     <p> Goals: {routine.goal} </p>
                     <p> Activities: </p>
                     <ul>
@@ -41,9 +48,8 @@ const Routines = (props) => {
               }
             })
           : null}
-      </div>
-    </div>
+    </>
   );
 };
 
-export default Routines;
+export default UsersRoutines;

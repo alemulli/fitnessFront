@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { Navbar, Activities, Home, MyRoutines, Routines } from "./";
+import { Navbar, Activities, Home, MyRoutines, Routines, UsersRoutines } from "./";
 import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
 import {
   getActivities,
@@ -15,6 +15,7 @@ const Main = () => {
   const [error, setError] = useState(null);
   const [allUserRoutines, setAllUserRoutines] = useState([]);
   const [currentUser, setCurrentUser] = useState({});
+  const [specificUser, setSpecificUser] = useState()
 
   //checking if there is a token in local storage
   useEffect(() => {
@@ -90,7 +91,11 @@ const Main = () => {
           />
           <Route
             path="/routines"
-            element={<Routines allRoutines={allRoutines} />}
+            element={<Routines allRoutines={allRoutines} setSpecificUser={setSpecificUser}/>}
+          />
+          <Route
+            path="/UsersRoutines"
+            element={<UsersRoutines specificUser={specificUser}/>}
           />
         </Routes>
       </div>

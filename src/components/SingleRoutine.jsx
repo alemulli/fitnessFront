@@ -5,14 +5,13 @@ import { RoutineActivity } from "./";
 //child component of MyRoutines that renders out each individual routines, is the parent routine of RoutineActivity when mapping over the activities of a specific routine, there are buttons that allow you to delete a routine and to edit the name, goal, and whether a routine is public or not
 
 const SingleRoutine = (props) => {
-  const routine = props.routine;
   const setAddActivityToRoutineMenu = props.setAddActivityToRoutineMenu;
   const setEditRoutineMenu = props.setEditRoutineMenu;
   const setEditRoutineActivityMenu = props.setEditRoutineActivityMenu;
   const setSelectedRoutine = props.setSelectedRoutine;
   const allUserRoutines = props.allUserRoutines
   const setAllUserRoutines = props.setAllUserRoutines
-
+  const [routine, setRoutine] = useState(props.routine)
   const [selectedActivityRoutine, setSelectedActivityRoutine] = useState();
   const [routinesActivities, setRoutinesActivities] = useState([routine.activities])
 
@@ -29,11 +28,11 @@ const SingleRoutine = (props) => {
     const id = routine.id;
     const response = await destroyRoutine(routine.id);
 
-    //this was my attempt at rerendering but it didn't work, something is undefined? do I need to tie this back to one of the useEffects?
-    setAllUserRoutines(allUserRoutines.filter(routine => {if(routine !== response){return true}}))
+    !response.error && setRoutine(false)
+
   }
 
-  return (
+  return (<>{routine ?
     <div className="oneRoutine">
       <h2>
         {routine.name}
@@ -88,7 +87,7 @@ const SingleRoutine = (props) => {
         </li>
       </ul>
     </div>
-  );
+ :null}</> );
 };
 
 export default SingleRoutine;

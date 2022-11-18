@@ -23,7 +23,12 @@ const EditRoutine = (props) => {
   }
 
   async function handleSubmit(event) {
-    console.log("You hit the sumbit button");
+    event.preventDefault();
+    // const routineId = 
+    // const name = editRoutineInfo.name
+    // const goal = editRoutineInfo.goal
+    // const isPublic = editRoutineInfo.isPublic
+    console.log("You hit the submit button");
   }
 
   return (

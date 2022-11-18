@@ -16,13 +16,14 @@ const MyRoutines = (props) => {
   const setAllRoutines = props.setAllRoutines;
   const currentUser = props.currentUser;
   const allActivities = props.allActivities;
+  const selectedRoutine = props.selectedRoutine;
+  const setSelectedRoutine = props.setSelectedRoutine;
 
   const [addRoutineMenu, setAddRoutineMenu] = useState(false);
   const [addActivityToRoutineMenu, setAddActivityToRoutineMenu] =
     useState(false);
   const [editRoutineMenu, setEditRoutineMenu] = useState(false);
   const [editRoutineActivityMenu, setEditRoutineActivityMenu] = useState(false);
-  const [selectedRoutine, setSelectedRoutine] = useState();
 
   async function openAddRoutineMenu() {
     setAddRoutineMenu(true);

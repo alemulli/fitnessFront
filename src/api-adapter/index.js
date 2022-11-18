@@ -220,3 +220,52 @@ export async function destroyRoutine(id) {
     console.error(error);
   }
 }
+
+
+//edit a routine
+export async function editRoutine(id, isPublic, name, goal) {
+  try {
+    const options = {
+      method: "PATCH",
+      headers: {
+        "Content-type": "application/json",
+        Authorization: `Bearer ${localStorage.getItem("token")}`,
+      },
+      body: {
+        isPublic, name, goal
+      }
+    };
+    const response = await fetch(
+      `${BASE_URL}/api/routines/${id}`,
+      options
+    );
+    const result = await response.json();
+    return result;
+  } catch (error) {
+    console.error(error);
+  }
+}
+
+//edit a routine activity
+export async function editRoutineActivity(id, count, duration) {
+  try {
+    const options = {
+      method: "PATCH",
+      headers: {
+        "Content-type": "application/json",
+        Authorization: `Bearer ${localStorage.getItem("token")}`,
+      },
+      body: {
+        count, duration
+      }
+    };
+    const response = await fetch(
+      `${BASE_URL}/api/routine_activities/${id}`,
+      options
+    );
+    const result = await response.json();
+    return result;
+  } catch (error) {
+    console.error(error);
+  }
+}

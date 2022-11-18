@@ -55,6 +55,8 @@ const MyRoutines = (props) => {
                 setEditRoutineMenu={setEditRoutineMenu}
                 setEditRoutineActivityMenu={setEditRoutineActivityMenu}
                 setSelectedRoutine={setSelectedRoutine}
+                editRoutineMenu = {editRoutineMenu}
+                editRoutineActivityMenu = {editRoutineActivityMenu}
               />
             );
           })
@@ -80,14 +82,7 @@ const MyRoutines = (props) => {
         allUserRoutines={allUserRoutines}
         setAllUserRoutines={setAllUserRoutines}
       />
-      <EditRoutine
-        editRoutineMenu={editRoutineMenu}
-        setEditRoutineMenu={setEditRoutineMenu}
-      />
-      <EditRoutineActivity
-        editRoutineActivityMenu={editRoutineActivityMenu}
-        setEditRoutineActivityMenu={setEditRoutineActivityMenu}
-      />
+      
     </div>
   );
 };

@@ -1,18 +1,20 @@
 import React, { useState } from "react";
-//import API PATCH request for routine activity
+import { editRoutineActivity } from "../api-adapter";
 
 //Menu that allows you to edit the duration and count of a routine activity
 
 const EditRoutineActivity = (props) => {
   const editRoutineActivityMenu = props.editRoutineActivityMenu;
   const setEditRoutineActivityMenu = props.setEditRoutineActivityMenu;
+  const activity = props.activity;
+  const selectedActivity = props.selectedActivity
   //props for updating allUserRoutines?
   //props for errors?
 
   //the initial states will probably change to a literal of what the value is of the routine we are trying to edit is before we edit them
   const [editRoutineActivityInfo, setEditRoutineActivityInfo] = useState({
-    duration: "",
-    count: "",
+    count: selectedActivity.count,
+    duration: selectedActivity.duration,
   });
 
   async function closeEditRoutineActivityMenu() {
@@ -21,7 +23,12 @@ const EditRoutineActivity = (props) => {
   }
 
   async function handleSubmit(event) {
-    console.log("this is a placeholder");
+    event.preventDefault();
+    const activityId = selectedActivity;
+    const count = editRoutineActivityInfo.count;
+    const duration = editRoutineActivityInfo.duration;
+    const response = await editRoutineActivity(activityId, count, duration);
+    setEditRoutineActivityMenu(false);
   }
 
   return (

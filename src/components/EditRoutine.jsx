@@ -1,20 +1,21 @@
 import React, { useState } from "react";
-//import API PATCH request for routine
+import { editRoutine } from "../api-adapter";
 
 //Menu that allows you to edit a routine
 
 const EditRoutine = (props) => {
   const editRoutineMenu = props.editRoutineMenu;
   const setEditRoutineMenu = props.setEditRoutineMenu;
+  const routine = props.routine;
   //props for updating allRoutines?
   //props for updating allUserRoutines?
   //props for errors?
 
   //the initial states will probably change to a literal of what the value is of the routine we are trying to edit is before we edit them
   const [editRoutineInfo, setEditRoutineInfo] = useState({
-    isPublic: false,
-    name: "",
-    goal: "",
+    isPublic: routine.isPublic,
+    name: routine.name,
+    goal: routine.goal,
   });
 
   async function closeEditRoutineMenu() {
@@ -24,11 +25,14 @@ const EditRoutine = (props) => {
 
   async function handleSubmit(event) {
     event.preventDefault();
-    // const routineId = 
-    // const name = editRoutineInfo.name
-    // const goal = editRoutineInfo.goal
-    // const isPublic = editRoutineInfo.isPublic
-    console.log("You hit the submit button");
+    const routineId = routine.id;
+
+    const name = editRoutineInfo.name;
+    const goal = editRoutineInfo.goal;
+    const isPublic = editRoutineInfo.isPublic;
+    const response = await editRoutine(routineId, isPublic, name, goal);
+
+    setEditRoutineMenu(false);
   }
 
   return (

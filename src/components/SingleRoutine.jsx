@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { destroyRoutine } from "../api-adapter";
-import { RoutineActivity } from "./";
+import { RoutineActivity, EditRoutine } from "./";
+
 
 //child component of MyRoutines that renders out each individual routines, is the parent routine of RoutineActivity when mapping over the activities of a specific routine, there are buttons that allow you to delete a routine and to edit the name, goal, and whether a routine is public or not
 
@@ -14,6 +15,8 @@ const SingleRoutine = (props) => {
   const [routine, setRoutine] = useState(props.routine)
   const [selectedActivityRoutine, setSelectedActivityRoutine] = useState();
   const [routinesActivities, setRoutinesActivities] = useState([routine.activities])
+  const editRoutineMenu = props.editRoutineMenu
+  const editRoutineActivityMenu = props.editRoutineActivityMenu
 
   async function openAddActivityToRoutineMenu() {
     setAddActivityToRoutineMenu(true);
@@ -22,6 +25,7 @@ const SingleRoutine = (props) => {
 
   async function openEditRoutineMenu() {
     setEditRoutineMenu(true);
+    setSelectedRoutine(routine)
   }
 
   async function deleteRoutine() {
@@ -70,6 +74,7 @@ const SingleRoutine = (props) => {
                     setEditRoutineActivityMenu={setEditRoutineActivityMenu}
                     routinesActivities={routinesActivities}
                     setRoutinesActivities={setRoutinesActivities}
+                    editRoutineActivityMenu = {editRoutineActivityMenu}
                   />
                 </div>
               );
@@ -86,6 +91,11 @@ const SingleRoutine = (props) => {
           <span>Add an Activity to the Routine</span>
         </li>
       </ul>
+      <EditRoutine
+        editRoutineMenu={editRoutineMenu}
+        setEditRoutineMenu={setEditRoutineMenu}
+        routine = {routine}
+        />
     </div>
  :null}</> );
 };

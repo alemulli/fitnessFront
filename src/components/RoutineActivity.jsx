@@ -6,12 +6,16 @@ import { destroyRoutineActivity } from "../api-adapter";
 const RoutineActivity = (props) => {
   const activity = props.activity;
   const setEditRoutineActivityMenu = props.setEditRoutineActivityMenu;
+  const routinesActivities = props.routinesActivities
+  const setRoutinesActivities = props.setRoutinesActivities
 
   async function deleteRoutineActivity() {
     const routineId = activity.routineActivityId;
     const response = await destroyRoutineActivity(activity.routineActivityId);
 
-    //needs to rerender the routines here
+
+    //this was my attempt at rerendering but it didn't work, do I need to tie this back to one of the useEffects?
+    setRoutinesActivities(routinesActivities.filter(activity => {if (activity !== response) {return true}}))
   }
 
   async function openEditRoutineActivityMenu() {

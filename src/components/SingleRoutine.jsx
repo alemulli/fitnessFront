@@ -10,8 +10,11 @@ const SingleRoutine = (props) => {
   const setEditRoutineMenu = props.setEditRoutineMenu;
   const setEditRoutineActivityMenu = props.setEditRoutineActivityMenu;
   const setSelectedRoutine = props.setSelectedRoutine;
+  const allUserRoutines = props.allUserRoutines
+  const setAllUserRoutines = props.setAllUserRoutines
 
   const [selectedActivityRoutine, setSelectedActivityRoutine] = useState();
+  const [routinesActivities, setRoutinesActivities] = useState([routine.activities])
 
   async function openAddActivityToRoutineMenu() {
     setAddActivityToRoutineMenu(true);
@@ -25,6 +28,9 @@ const SingleRoutine = (props) => {
   async function deleteRoutine() {
     const id = routine.id;
     const response = await destroyRoutine(routine.id);
+
+    //this was my attempt at rerendering but it didn't work, something is undefined? do I need to tie this back to one of the useEffects?
+    setAllUserRoutines(allUserRoutines.filter(routine => {if(routine !== response){return true}}))
   }
 
   return (
@@ -63,6 +69,8 @@ const SingleRoutine = (props) => {
                   <RoutineActivity
                     activity={activity}
                     setEditRoutineActivityMenu={setEditRoutineActivityMenu}
+                    routinesActivities={routinesActivities}
+                    setRoutinesActivities={setRoutinesActivities}
                   />
                 </div>
               );

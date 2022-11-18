@@ -17,8 +17,9 @@ const UsersRoutines = (props) => {
       }, []);
 
   return (
-    <>
-     <h2>{specificUser}'s Routines</h2>
+    <div id="usersRoutines">
+     <h2 className="pageName">{specificUser}'s Routines</h2>
+     <div className="allRoutines">
      {thisUsersRoutines
           ? thisUsersRoutines.map((routine, index) => {
               if (routine.isPublic) {
@@ -48,7 +49,8 @@ const UsersRoutines = (props) => {
               }
             })
           : null}
-    </>
+          </div>
+    </div>
   );
 };
 

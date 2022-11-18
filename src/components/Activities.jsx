@@ -17,9 +17,9 @@ const Activities = (props) => {
 
   return (
     <div id="Activities">
-      <h2>Activities</h2>
+      <h2 className="pageName">Activities</h2>
       {localStorage.getItem("token") ? (
-        <>
+        <div className="addingButton">
           <span
             className="material-symbols-outlined"
             onClick={openAddActivityMenu}
@@ -28,7 +28,7 @@ const Activities = (props) => {
             add_circle
           </span>
           <span> Add a New Activity </span>
-        </>
+        </div>
       ) : null}
 
       <div className="allActivities">

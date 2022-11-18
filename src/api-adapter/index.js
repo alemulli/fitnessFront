@@ -1,7 +1,8 @@
 // all API fetch requests go here
 
-// const BASE_URL = "https://shielded-fjord-88557.herokuapp.com";
+// const BASE_URL = "https://fitnesstrac-kr.herokuapp.com";
 const BASE_URL = "http://localhost:8080";
+//We used our own Base URL since we had it finished and passed 100% tests
 
 //login
 export async function login(username, password) {

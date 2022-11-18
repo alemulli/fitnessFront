@@ -31,18 +31,16 @@ const MyRoutines = (props) => {
 
   return (
     <div id="myRoutines">
-      <h2>myRoutines</h2>
+      <h2 className="pageName">My Routines</h2>
       {localStorage.getItem("token") ? (
-        <>
-          <span
+          <div className="addingButton"><span
             className="material-symbols-outlined"
             onClick={openAddRoutineMenu}
             alt="Add a New Routine"
           >
             add_circle
           </span>
-          <span> Add a New Routine </span>
-        </>
+          <span> Add a New Routine </span></div>
       ) : null}
       <div className="myRoutines">
         {allUserRoutines && allUserRoutines.length ? (

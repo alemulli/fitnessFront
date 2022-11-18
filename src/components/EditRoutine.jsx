@@ -8,11 +8,7 @@ const EditRoutine = (props) => {
   const setEditRoutineMenu = props.setEditRoutineMenu;
   const routine = props.routine;
   const selectedRoutine = props.selectedRoutine
-  //props for updating allRoutines?
-  //props for updating allUserRoutines?
-  //props for errors?
 
-  //the initial states will probably change to a literal of what the value is of the routine we are trying to edit is before we edit them
   const [editRoutineInfo, setEditRoutineInfo] = useState({
     isPublic: routine.isPublic,
     name: routine.name,
@@ -21,7 +17,6 @@ const EditRoutine = (props) => {
 
   async function closeEditRoutineMenu() {
     setEditRoutineMenu(false);
-    //setError(null)? if we need errors on this one
   }
 
   async function handleSubmit(event) {
@@ -37,7 +32,7 @@ const EditRoutine = (props) => {
   }
 
   return (
-    <div className={`${editRoutineMenu}`} id="editRoutineMenu">
+    <div className={`${editRoutineMenu && selectedRoutine.id == routine.id}`} id="editRoutineMenu">
       <div className="editMenu">
         <span
           className="material-symbols-outlined"

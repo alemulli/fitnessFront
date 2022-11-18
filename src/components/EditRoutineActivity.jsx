@@ -8,18 +8,14 @@ const EditRoutineActivity = (props) => {
   const setEditRoutineActivityMenu = props.setEditRoutineActivityMenu;
   const activity = props.activity;
   const selectedActivity = props.selectedActivity
-  //props for updating allUserRoutines?
-  //props for errors?
 
-  //the initial states will probably change to a literal of what the value is of the routine we are trying to edit is before we edit them
   const [editRoutineActivityInfo, setEditRoutineActivityInfo] = useState({
-    count: selectedActivity.count,
-    duration: selectedActivity.duration,
+    count: activity.count,
+    duration: activity.duration,
   });
 
   async function closeEditRoutineActivityMenu() {
     setEditRoutineActivityMenu(false);
-    //setError(null)? if we need errors on this one
   }
 
   async function handleSubmit(event) {
@@ -32,7 +28,7 @@ const EditRoutineActivity = (props) => {
   }
 
   return (
-    <div className={`${editRoutineActivityMenu}`} id="editRoutineActivityMenu">
+    <div className={`${editRoutineActivityMenu && selectedActivity == activity.routineActivityId}`} id="editRoutineActivityMenu">
       <div className="editMenu">
         <span
           className="material-symbols-outlined"
